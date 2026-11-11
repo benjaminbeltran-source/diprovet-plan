@@ -1,0 +1,673 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Plan Diprovet B2B</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+/* Layout: Propultech carbon page. Header + stat ribbon, full-width Gantt with sticky task column, then hitos, acuerdos y pendientes. Dark-first, paper variant for light. */
+:root {
+  --bg: #1e1e1e;
+  --surface: #262626;
+  --raised: #2e2e2e;
+  --fg: #f4f5f7;
+  --fg-2: #a8a8a8;
+  --fg-3: #8c8c8c;
+  --stroke: rgba(255,255,255,0.09);
+  --stroke-strong: rgba(255,255,255,0.2);
+  --grid: rgba(255,255,255,0.06);
+  --weekend: rgba(255,255,255,0.025);
+  --holiday: rgba(245,165,36,0.13);
+  --accent: #50baff;
+  --cta: #0624ff;
+  --today: #50baff;
+  --warn: #f5a524;
+  --warn-ink: #f5a524;
+  --ok: #4ade80;
+  --c-gestion: #8d93a3;
+  --c-diseno: #9b5fd4;
+  --c-shopify: #50baff;
+  --c-mdw: #5c70ff;
+  --c-salida: #4ade80;
+  --bar-ink: #0e1220;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --dw: 11px;
+  --label-w: 300px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f5f7; --surface: #ffffff; --raised: #eef0f5; --fg: #1e1e1e; --fg-2: #444a55; --fg-3: #6b707c;
+    --stroke: #e2e6f5; --stroke-strong: #c8cedd; --grid: rgba(13,26,74,0.07); --weekend: rgba(13,26,74,0.03);
+    --holiday: rgba(245,165,36,0.18); --accent: #0624ff; --cta: #0624ff; --today: #0624ff;
+    --warn: #f5a524; --warn-ink: #9a5d00; --ok: #1f9d55;
+    --c-gestion: #5b6478; --c-diseno: #7a3fc0; --c-shopify: #1689d6; --c-mdw: #0624ff; --c-salida: #1f9d55;
+    --bar-ink: #ffffff; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f4f5f7; --surface: #ffffff; --raised: #eef0f5; --fg: #1e1e1e; --fg-2: #444a55; --fg-3: #6b707c;
+  --stroke: #e2e6f5; --stroke-strong: #c8cedd; --grid: rgba(13,26,74,0.07); --weekend: rgba(13,26,74,0.03);
+  --holiday: rgba(245,165,36,0.18); --accent: #0624ff; --cta: #0624ff; --today: #0624ff;
+  --warn: #f5a524; --warn-ink: #9a5d00; --ok: #1f9d55;
+  --c-gestion: #5b6478; --c-diseno: #7a3fc0; --c-shopify: #1689d6; --c-mdw: #0624ff; --c-salida: #1f9d55;
+  --bar-ink: #ffffff; color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font: 400 15px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 1440px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+  display: flex; flex-direction: column; gap: 48px;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; text-transform: uppercase; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(30px, 4.4vw, 48px); line-height: 1.04; letter-spacing: -0.005em; }
+h2 { font-size: 22px; line-height: 1.2; letter-spacing: 0.01em; }
+h3 { font-size: 15px; letter-spacing: 0.04em; }
+p { margin: 0; color: var(--fg-2); }
+.eyebrow { font: 400 12px/1.3 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+a { color: var(--fg); text-underline-offset: 3px; text-decoration-color: var(--stroke-strong); }
+a:hover { text-decoration-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Header */
+.masthead { display: flex; flex-direction: column; gap: 20px; }
+.brandline { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.logo { height: 30px; width: auto; color: var(--fg); }
+.logo .word { fill: currentColor; }
+.title-block { display: flex; flex-direction: column; gap: 12px; max-width: 70ch; }
+.lede { font-size: 16px; color: var(--fg-2); max-width: 68ch; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--stroke-strong); border-bottom: 1px solid var(--stroke); }
+.stat { padding: 14px 16px 14px 0; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.stat + .stat { padding-left: 16px; border-left: 1px solid var(--stroke); }
+.stat b { font: 500 22px/1.15 var(--font-mono); letter-spacing: -0.01em; color: var(--fg); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--fg-3); }
+@media (max-width: 720px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { border-left: 0; padding-left: 0; border-top: 1px solid var(--stroke); }
+  .stat:nth-child(4) { border-top: 1px solid var(--stroke); }
+}
+
+/* Section heads */
+.section { display: flex; flex-direction: column; gap: 18px; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+.section-head p { font-size: 14px; max-width: 70ch; }
+
+/* Controls */
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip {
+  font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--fg-2); background: transparent; border: 1px solid var(--stroke-strong);
+  padding: 8px 10px; border-radius: 2px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+}
+.chip:hover { color: var(--fg); border-color: var(--fg-3); }
+.chip[aria-pressed="true"] { color: var(--fg); background: var(--raised); border-color: var(--fg-2); }
+.chip .sw { width: 10px; height: 10px; border-radius: 1px; }
+.sep { width: 1px; height: 22px; background: var(--stroke-strong); margin-inline: 4px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12.5px; color: var(--fg-3); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.lg-bar { width: 22px; height: 10px; border-radius: 1px; background: var(--fg-3); display: inline-block; }
+.lg-bar.done { opacity: 0.45; }
+.lg-bar.todo { background: transparent; border: 1.5px solid var(--fg-3); }
+.lg-bar.risk { background: transparent; border: 1.5px solid var(--warn); }
+.lg-dia { width: 10px; height: 10px; transform: rotate(45deg); background: var(--fg); display: inline-block; }
+.lg-hol { width: 12px; height: 12px; background: var(--holiday); display: inline-block; }
+.lg-today { width: 2px; height: 14px; background: var(--today); display: inline-block; }
+
+/* Gantt */
+.gantt-wrap { overflow-x: auto; border: 1px solid var(--stroke); background: var(--surface); -webkit-overflow-scrolling: touch; }
+.gantt { position: relative; min-width: max-content; }
+.g-row { display: flex; min-height: 40px; border-bottom: 1px solid var(--stroke); }
+.g-row:last-child { border-bottom: 0; }
+.g-label {
+  position: sticky; left: 0; z-index: 3; width: var(--label-w); flex: 0 0 var(--label-w);
+  background: var(--surface); border-right: 1px solid var(--stroke-strong);
+  padding: 7px 12px; display: flex; flex-direction: column; justify-content: center; gap: 1px; min-width: 0;
+}
+.g-label .nm { font-size: 13.5px; line-height: 1.3; color: var(--fg); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.g-label .ow { font: 400 11.5px/1.3 var(--font-mono); color: var(--fg-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-track { position: relative; flex: 0 0 auto; width: calc(var(--days) * var(--dw)); }
+.g-head { position: sticky; top: 0; z-index: 4; background: var(--surface); border-bottom: 1px solid var(--stroke-strong); }
+.g-head .g-label { justify-content: flex-end; }
+.g-head .g-track { height: 52px; }
+.mon { position: absolute; top: 6px; font: 500 11px/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-2); padding-left: 6px; border-left: 1px solid var(--stroke-strong); height: 14px; }
+.wk { position: absolute; bottom: 7px; font: 400 11px/1 var(--font-mono); color: var(--fg-3); padding-left: 4px; font-variant-numeric: tabular-nums; }
+.g-group .g-label { background: var(--raised); }
+.g-group { min-height: 32px; background: var(--raised); }
+.g-group .gname { font: 500 12px/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); display: flex; align-items: center; gap: 8px; }
+.g-group .gname i { width: 10px; height: 10px; border-radius: 1px; display: inline-block; }
+
+.overlay { position: absolute; top: 0; bottom: 0; left: var(--label-w); width: calc(var(--days) * var(--dw)); pointer-events: none; z-index: 1;
+  background:
+    repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px calc(7 * var(--dw))),
+    repeating-linear-gradient(to right, transparent 0 calc(5 * var(--dw)), var(--weekend) calc(5 * var(--dw)) calc(7 * var(--dw)));
+}
+.hol { position: absolute; top: 52px; bottom: 0; width: var(--dw); background: var(--holiday); }
+.today { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--today); }
+.today-lbl { position: absolute; top: 22px; transform: translateX(-50%); font: 500 10px/1 var(--font-mono); letter-spacing: 0.06em; color: var(--surface); background: var(--today); padding: 3px 4px; border-radius: 1px; white-space: nowrap; }
+.ms-lbl.flip { transform: translate(-100%, -50%); }
+
+.bar {
+  position: absolute; top: 50%; transform: translateY(-50%); height: 18px; border-radius: 2px;
+  background: var(--c); border: 1.5px solid var(--c); cursor: pointer; z-index: 2; padding: 0;
+  display: flex; align-items: center; min-width: var(--dw);
+}
+.bar.done { opacity: 0.42; }
+.bar.todo { background: color-mix(in srgb, var(--c) 16%, transparent); }
+.bar.risk { background: color-mix(in srgb, var(--warn) 18%, transparent); border-color: var(--warn); border-style: dashed; }
+.bar.wait { background: repeating-linear-gradient(135deg, var(--c) 0 6px, color-mix(in srgb, var(--c) 35%, transparent) 6px 10px); }
+.bar:hover, .bar.sel { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--fg); }
+.bar .tag.flip { left: auto; right: calc(100% + 6px); }
+.bar .tag { position: absolute; left: calc(100% + 6px); font: 400 11px/1 var(--font-mono); color: var(--fg-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.crit-mark { position: absolute; top: -9px; left: 0; font: 600 9px/1 var(--font-mono); letter-spacing: 0.08em; color: var(--fg); opacity: 0; }
+
+.ms { position: absolute; top: 50%; width: 14px; height: 14px; transform: translate(-50%, -50%) rotate(45deg); background: var(--c); border: 2px solid var(--surface); outline: 1px solid var(--c); cursor: pointer; z-index: 2; padding: 0; }
+.ms:hover, .ms.sel { outline: 2px solid var(--fg); }
+.ms-lbl { position: absolute; top: 50%; transform: translateY(-50%); font: 500 11px/1 var(--font-mono); color: var(--fg-2); white-space: nowrap; pointer-events: none; z-index: 2; }
+
+.gantt.crit-on .g-row[data-crit="0"]:not(.g-head):not(.g-group) .bar { opacity: 0.18; }
+.gantt.crit-on .g-row[data-crit="1"] .bar { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--fg); }
+.gantt.crit-on .g-row[data-crit="1"] .g-label .nm::before { content: "● "; color: var(--accent); }
+.g-row[hidden] { display: none !important; }
+
+@media (max-width: 720px) {
+  :root { --label-w: 158px; --dw: 9px; }
+  .g-label .nm { font-size: 12.5px; }
+  .g-label .ow { font-size: 10.5px; }
+  .bar .tag { display: none; }
+}
+
+/* Detail panel */
+.detail { border: 1px solid var(--stroke-strong); background: var(--surface); padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px 32px; }
+.detail .d-main { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.detail .d-title { font: 500 19px/1.25 var(--font-display); text-transform: none; color: var(--fg); }
+.detail .d-meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 13.5px; align-content: start; min-width: 0; }
+.detail dt { font: 400 11.5px/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-3); }
+.detail dd { margin: 0; color: var(--fg); min-width: 0; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font: 500 11px/1 var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 7px; border-radius: 2px; border: 1px solid var(--stroke-strong); color: var(--fg-2); white-space: nowrap; }
+.pill.s-done { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 45%, transparent); }
+.pill.s-doing { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.pill.s-risk, .pill.s-wait { color: var(--warn-ink); border-color: color-mix(in srgb, var(--warn) 55%, transparent); }
+@media (max-width: 720px) { .detail { grid-template-columns: 1fr; } }
+
+/* Tables */
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--stroke); background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--stroke); vertical-align: top; }
+th { font: 500 11.5px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-3); background: var(--raised); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.date { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--fg); }
+td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; }
+.fr { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg-2); }
+.fr i { width: 9px; height: 9px; transform: rotate(45deg); display: inline-block; background: var(--c); }
+
+/* Agreements */
+.agree { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1px; background: var(--stroke); border: 1px solid var(--stroke); }
+.agree section { background: var(--surface); padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.agree ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.agree li { font-size: 14px; line-height: 1.5; color: var(--fg); display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: baseline; }
+.agree li small { font: 400 11px/1 var(--font-mono); color: var(--fg-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.agree li.open { color: var(--fg-2); }
+.agree li.open em { font-style: normal; color: var(--warn-ink); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 4px; }
+
+.assume { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px 32px; }
+.assume div { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--stroke-strong); padding-top: 10px; }
+.assume b { font: 500 12px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg); }
+.assume p { font-size: 14px; }
+.foot { font-size: 12.5px; color: var(--fg-3); border-top: 1px solid var(--stroke); padding-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="brandline">
+      <svg class="logo" viewBox="140 140 1650 275" role="img" aria-label="Propultech">
+        <path class="word" d="M567.09,191.76H494.46V364.25h34.83V308.86h37.8c46.23,0,66.9-24.78,66.9-58.54s-20.67-58.56-66.9-58.56m.54,86H529.29V223.16h38.34c23.11,0,31,11.6,31,27.16,0,15.820-7.9,27.42-31,27.42"/>
+        <path class="word" d="M797.78,230.54c-42.42,0-72.34,29-72.34,68.57s29.92,68.58,72.34,68.58,72.36-29,72.36-68.58-29.92-68.57-72.36-68.57m0,107.85c-23.66,0-39.7-16.34-39.7-39.28s16-39.3,39.7-39.3,39.44,16.34,39.44,39.3-15.76,39.28-39.44,39.28"/>
+        <path class="word" d="M957,230.54c-42.15,0-71.53,27.420-71.53,69.62V405.44h32.37V345.25c9.51,14.51,25.56,22.44,44.89,22.44,32.63,0,66.9-22.7,66.9-67.27,0-41.39-29.92-69.88-72.63-69.88m.27,107.85c-23.65,0-39.43-16.34-39.43-39.28s15.78-39.3,39.43-39.3S997,276.15,997,299.11s-16,39.28-39.71,39.28"/>
+        <path class="word" d="M1145.25,234v67.79c0,24.78-13.57,36.64-34,36.64s-34-11.86-34-36.64V234h-32.36v67.79c0,43.78,26.64,65.94,66.36,65.94s66.37-22.44,66.37-65.94V234Z"/>
+        <rect class="word" x="1195.95" y="187.82" width="32.37" height="176.42"/>
+        <path class="word" d="M1474.09,299.11c0-39.56-29.38-68.57-71.8-68.57s-72.36,29-72.36,68.57,29.92,68.57,72.36,68.57c31.83,0,56.29-16.1,66.37-40.88h-34.54c-6.8,8.44-17.42,12.4-31.83,12.4-19,0-34-10-38.35-29h110.15Zm-109.35-14c5.19-17.13,19.33-26.09,37.55-26.09,17.67,0,32.37,8.7,37.53,26.09Z"/>
+        <path class="word" d="M1560.79,338.39c-23.66,0-39.7-16.34-39.7-39.28s16-39.3,39.7-39.3c17.69,0,31.29,9,37,22.94h32.66c-6.54-30.84-33.2-52.21-69.65-52.21-42.42,0-72.34,29-72.34,68.57s29.92,68.58,72.34,68.58c36.45,0,63.110-21.38,69.65-52.23h-32.66c-5.7,14-19.3,22.93-37,22.93"/>
+        <path class="word" d="M1717.63,230.54c-17.13,0-31,7.64-40,21.63V187.82h-32.36V364.25h32.36V296.48c0-24.26,14.14-36.67,34-36.67,20.37,0,34,11.86,34,36.67v67.77H1778V296.48c0-46.42-29.36-65.94-60.37-65.94"/>
+        <path class="word" d="M679.7,234c-18.17,0-32.89,14.27-32.89,31.88v98.4H679.7v-98.4H718V234Z"/>
+        <path class="word" d="M1317.78,265.85V234h-38.26V187.82h-32.88V332.36c0,17.61,14.72,31.89,32.88,31.89h38.26V332.36h-38.26V265.850Z"/>
+        <path fill="#0624FF" d="M354.7,212.15a8.68,8.68,0,0,1,3.72-.86c5.71,0,10.33,6,7.44,11.68L271.37,410l-15.76-45.840L209,380.35c-10.33,3.59-20.3-6.08-16.6-16.09l16.73-45.21-47.29-15.28L354.7,212.15"/>
+        <path fill="#50BAFF" d="M416.27,142.67,142,217.82l65.47,22.11a58.27,58.27,0,0,0,42.4-2l111.39-49.83a23.54,23.54,0,0,1,24.53,3.28,21.81,21.81,0,0,1,5.94,26.26l-51.39,108a53.39,53.39,0,0,0-2.06,41.11l22.81,63.48L438.6,164.310C442,152.760,432.75,142,421.28,142a18.75,18.75,0,0,0-5,.68"/>
+      </svg>
+      <span class="eyebrow">Actualizado 11 nov 2026 · Benjamín Beltrán, delivery lead</span>
+    </div>
+    <div class="title-block">
+      <span class="eyebrow">Diprovet B2B · Shopify Advanced + middleware Random</span>
+      <h1>Plan de proyecto</h1>
+      <p class="lede">Planificación del desarrollo desde el kickoff del 19 de octubre hasta la salida a producción la semana del 25 de enero de 2027. Incluye los 8 hitos de entrega, los acuerdos tomados en el Discovery y lo que falta para cerrarlo.</p>
+    </div>
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><b>25 ENE</b><span>Go-live, semana del lunes 25-ene-2027</span></div>
+      <div class="stat" role="listitem"><b>20 NOV</b><span>Cierre del Discovery con minuta firmada</span></div>
+      <div class="stat" role="listitem"><b id="st-week">SEM 4/16</b><span>Semana actual del plan</span></div>
+      <div class="stat" role="listitem"><b id="st-done">5/27</b><span>Tareas terminadas</span></div>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="h-gantt">
+    <div class="section-head">
+      <h2 id="h-gantt">Carta Gantt</h2>
+      <p>Toca una barra para ver el detalle. La ruta crítica marca la cadena que define la fecha de go-live: cada semana de atraso en ella corre el go-live en la misma medida.</p>
+    </div>
+    <div class="controls" id="filters" role="group" aria-label="Filtrar por frente"></div>
+    <div class="legend">
+      <span><i class="lg-bar"></i>En curso</span>
+      <span><i class="lg-bar todo"></i>Por iniciar</span>
+      <span><i class="lg-bar done"></i>Terminada</span>
+      <span><i class="lg-bar risk"></i>En riesgo</span>
+      <span><i class="lg-dia"></i>Hito</span>
+      <span><i class="lg-hol"></i>Feriado</span>
+      <span><i class="lg-today"></i>Hoy</span>
+    </div>
+    <div class="gantt-wrap" id="gwrap">
+      <div class="gantt" id="gantt"></div>
+    </div>
+    <div class="detail" id="detail" aria-live="polite"></div>
+  </section>
+
+  <section class="section" aria-labelledby="h-hitos">
+    <div class="section-head">
+      <h2 id="h-hitos">Hitos de entrega</h2>
+      <p>Ocho hitos, cuatro por frente. Cada uno se entrega contra aceptación escrita de Diprovet.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Fecha</th><th>Frente</th><th>Hito</th><th>Criterio de aceptación</th></tr></thead>
+        <tbody id="hitos-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-acuerdos">
+    <div class="section-head">
+      <h2 id="h-acuerdos">Acuerdos del Discovery</h2>
+      <p>Lo decidido en el kickoff, las sesiones de Discovery, la sesión de infraestructura y las weekly, con la fecha de la reunión donde se acordó.</p>
+    </div>
+    <div class="agree">
+      <section>
+        <h3>Precios y descuentos</h3>
+        <ul>
+          <li>Dos listas de precio desde Random: base y oferta. Las campañas se manejan con reglas y cupones en Shopify.<small>09·NOV</small></li>
+          <li>Diprovet decide los precios en Random, el middleware los escribe en Shopify y nadie los edita a mano. Una conciliación diaria corrige cualquier diferencia.<small>03·NOV</small></li>
+          <li>Cada cliente pertenece a un solo grupo de descuento (P11 a P14), guardado en cada contacto; el middleware lo copia desde la empresa y el descuento se aplica por segmento.<small>09·NOV</small></li>
+          <li>Precios netos más 19% de IVA. En productos en oferta se muestra el precio anterior tachado.<small>02·NOV</small></li>
+          <li>Si dos descuentos aplican al mismo producto, Shopify cobra el mayor; no se suman. Es un límite de Shopify Advanced, igual que el tope de 25 descuentos automáticos activos.<small>05·NOV</small></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Clientes y surtido</h3>
+        <ul>
+          <li>El RUT es la llave única de cada cliente.<small>09·NOV</small></li>
+          <li>Catálogo web de unos 10.000 SKU con stock vigente.<small>21·OCT</small></li>
+          <li>Usuarios nuevos o sin registro no ven productos con receta retenida.<small>09·NOV</small></li>
+          <li>Productos refrigerados y con receta se marcan como atributos del producto.<small>03·NOV</small></li>
+          <li>Un visitante sin registro puede pedir cotización sin ver precios.<small>02·NOV</small></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Experiencia de compra</h3>
+        <ul>
+          <li>Diseño aprobado en general; desde aquí solo ajustes que no impliquen desarrollo nuevo.<small>09·NOV</small></li>
+          <li>Diez marcas destacadas y el resto en orden alfabético.<small>09·NOV</small></li>
+          <li>Pedido rápido con búsqueda por nombre de producto.<small>09·NOV</small></li>
+          <li>Comparador de hasta 4 productos.<small>02·NOV</small></li>
+          <li>La cotización se envía como solicitud al ejecutivo, sin descarga en PDF.<small>02·NOV</small></li>
+          <li>Despacho solo a direcciones existentes y validadas. Sin pago contra entrega.<small>02·NOV</small></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Integración con Random</h3>
+        <ul>
+          <li>Stock con webhooks de Random más una sincronización completa diaria al inicio de la jornada.<small>03·NOV</small></li>
+          <li>Una compra con transferencia es un pedido con pago pendiente; se despacha cuando Diprovet lo marca como pagado. Una compra con crédito se despacha al crearse.<small>03·NOV</small></li>
+          <li>Los acuerdos de precio por cliente y producto se resuelven por cotización, no con listas.<small>03·NOV</small></li>
+          <li>El crédito se descuenta al comprar en la tienda y se repone cuando Random informa la factura pagada.<em>Mecanismo por confirmar</em><small>03·NOV</small></li>
+          <li>Plan de API de Random de 6.000 transacciones al mes; los webhooks no consumen ese cupo.<small>21·OCT</small></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Infraestructura</h3>
+        <ul>
+          <li>El middleware corre en el Google Cloud de Diprovet sobre Compute Engine. Primero staging, luego producción.<small>27·OCT</small></li>
+          <li>Respaldo diario con retención de 30 días, con prueba de restauración antes de producción.<small>27·OCT</small></li>
+          <li>El middleware se publica en un subdominio de Diprovet, sin balanceador.<small>03·NOV</small></li>
+          <li>Repositorios en el GitHub de Propultech durante el desarrollo y transferencia del historial completo a Diprovet.<small>19·OCT</small></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Forma de trabajo</h3>
+        <ul>
+          <li>Metodología híbrida Scrum y Kanban, con prioridades revisadas cada semana.<small>19·OCT</small></li>
+          <li>Slack (#team-diprovet) como canal principal, de 9 a 18 h.<small>19·OCT</small></li>
+          <li>Reunión de seguimiento semanal los lunes.<small>19·OCT</small></li>
+          <li>Capacitación en sesiones grabadas al cierre del proyecto.<small>19·OCT</small></li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-pend">
+    <div class="section-head">
+      <h2 id="h-pend">Pendientes para cerrar el Discovery</h2>
+      <p>El plan asume estas fechas. Si un insumo se atrasa, la tarea que lo necesita se corre en la misma medida.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Fecha límite</th><th>Insumo o decisión</th><th>Responsable</th><th>Se necesita para</th></tr></thead>
+        <tbody>
+          <tr><td class="date">18-nov</td><td>Casos de uso comerciales de precios y descuentos</td><td>Diprovet · J. L. del Campo, M. Hormazábal</td><td>Reglas de precio y pruebas de QA</td></tr>
+          <tr><td class="date">18-nov</td><td>Excel de clientes por lista P11 a P14</td><td>Diprovet</td><td>Migración de clientes y companies</td></tr>
+          <tr><td class="date">18-nov</td><td>Árbol de categorías, con menos de 7 categorías de nivel 1</td><td>Diprovet · aprobación de Sebastián</td><td>Theme y menú</td></tr>
+          <tr><td class="date">18-nov</td><td>Lista de 38 marcas, top 10 y productos del home</td><td>Diprovet · validación con la DT</td><td>Theme</td></tr>
+          <tr><td class="date">18-nov</td><td>Campos de tipo de cliente y grupo de descuento en la API<span class="sub">No vienen en GET /web32/entidades</span></td><td>Random · Diego Pérez</td><td>Sincronización de clientes (desde 23-nov)</td></tr>
+          <tr><td class="date">18-nov</td><td>Confirmar que la API entrega precios por lista y SKU, la lista de cada empresa, avisos de cambio de precio y el pago de facturas</td><td>Random · Diego Pérez</td><td>Listas de precio y crédito</td></tr>
+          <tr><td class="date">20-nov</td><td>Crédito de tienda de Shopify<span class="sub">Validar: cupo por empresa con una sola sucursal, tope en CLP y uso al pagar una cotización</span></td><td>Propultech y cobranza Diprovet</td><td>Validación de pedidos (desde 21-dic)</td></tr>
+          <tr><td class="date">20-nov</td><td>Días de espera de una transferencia y momento en que el pedido pasa a Random</td><td>Diprovet</td><td>Envío de pedidos y pagos</td></tr>
+          <tr><td class="date">20-nov</td><td>Acuerdos de precio por cliente y producto, y quién inicia la cotización</td><td>Diprovet</td><td>Cotización con precio acordado</td></tr>
+          <tr><td class="date">20-nov</td><td>Retiro en bodega</td><td>Operaciones Diprovet</td><td>Logística y checkout</td></tr>
+          <tr><td class="date">20-nov</td><td>Comisiones de Shopify en ventas a crédito</td><td>Propultech y Diprovet</td><td>Medios de pago</td></tr>
+          <tr><td class="date">11-dic</td><td>Equipo de Diprovet disponible para UAT del 11 al 22 de enero</td><td>Diprovet</td><td>QA y UAT</td></tr>
+          <tr><td class="date">18-dic</td><td>Dominio y certificado TLS de producción</td><td>TI Diprovet y Propultech</td><td>Ambiente de producción</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-sup">
+    <div class="section-head"><h2 id="h-sup">Supuestos del plan</h2></div>
+    <div class="assume">
+      <div><b>Calendario</b><p>Se descuentan los feriados del 8 y 25 de diciembre y el 1 de enero. El resto de diciembre y enero se trabaja normal en ambos equipos.</p></div>
+      <div><b>Equipo</b><p>Alejandro Hernández en middleware; Gonzalo Villanueva en Shopify, con Nicolás De Mayo de apoyo; Pascale Didier en diseño; Benjamín Beltrán lidera el proyecto.</p></div>
+      <div><b>Ruta crítica</b><p>Pasa por el middleware: sincronización, reglas de precio, validación y envío de pedidos. El theme muestra precios y surtido una vez que el middleware los calcula.</p></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Propultech · Diprovet B2B · Plan de proyecto</span>
+    <span>Las tareas del plan están cargadas con estas fechas en el tablero Diprovet B2B de ClickUp.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var START = Date.UTC(2026, 9, 19); // lunes 19-oct-2026
+  var END = Date.UTC(2027, 0, 31);   // domingo 31-ene-2027
+  var DAY = 86400000;
+  var DAYS = Math.round((END - START) / DAY) + 1;
+  var TODAY = Date.UTC(2026, 10, 11);
+  var HOLIDAYS = ["2026-12-08", "2026-12-25", "2027-01-01"];
+  var CU = "https://app.clickup.com/t/";
+
+  var FRENTES = [
+    { id: "gestion", name: "Gestión y acuerdos", c: "--c-gestion" },
+    { id: "diseno", name: "Diseño UX/UI", c: "--c-diseno" },
+    { id: "shopify", name: "Shopify", c: "--c-shopify" },
+    { id: "mdw", name: "Middleware", c: "--c-mdw" },
+    { id: "salida", name: "QA y salida a producción", c: "--c-salida" }
+  ];
+  var STATUS = {
+    done: { t: "Terminada", cls: "s-done", bar: "done" },
+    doing: { t: "En curso", cls: "s-doing", bar: "" },
+    todo: { t: "Por iniciar", cls: "", bar: "todo" },
+    risk: { t: "En riesgo", cls: "s-risk", bar: "risk" },
+    wait: { t: "Esperando feedback", cls: "s-wait", bar: "wait" }
+  };
+
+  var T = [
+    { id: "g1", f: "gestion", n: "Gestión del proyecto y weekly de los lunes", o: "Benjamín Beltrán", s: "2026-10-19", e: "2027-01-25", st: "doing", cu: "17th71z7mtf", note: "Seguimiento semanal con Diprovet, prioridades y control del plan." },
+    { id: "g2", f: "gestion", n: "Kickoff con Diprovet", o: "Benjamín Beltrán", s: "2026-10-19", e: "2026-10-19", st: "done", cu: "17th71z8u9h", note: "Equipo, alcance sobre Shopify Advanced, metodología y canales." },
+    { id: "g3", f: "gestion", n: "Discovery: sesiones de negocio, diseño y arquitectura", o: "Benjamín · Alejandro · Sebastián", s: "2026-10-21", e: "2026-11-20", st: "doing", cu: "17th71z8u9m", note: "Sesiones del 21-oct, 27-oct, 02-nov, 03-nov y 09-nov. Termina con el documento de diseño." },
+    { id: "g4", f: "gestion", n: "Insumos pendientes de Diprovet y Random", o: "Diprovet · Random", s: "2026-11-09", e: "2026-11-18", st: "risk", crit: 1, cu: "17th71z9hcb", note: "Casos de uso, árbol de categorías, clientes P11–P14, marcas, home, retiro en bodega y campos de tipo de cliente y grupo en la API de Random. Detalle en la tabla de pendientes." },
+    { id: "g5", f: "gestion", n: "Cierre de decisiones, minuta firmada y anexo de alcance", o: "Benjamín Beltrán", s: "2026-11-16", e: "2026-11-20", st: "todo", crit: 1, dep: ["g4"], cu: "17th71z9hcc", note: "Listas de precio, crédito de tienda, pagos y despacho, cotización, visibilidad por segmento, categorías, retiro en bodega y comisiones. Incluye qué se entrega sobre Shopify Advanced y con qué limitaciones." },
+
+    { id: "d1", f: "diseno", n: "Diseño UX/UI: maqueta, iteraciones y aprobación", o: "Pascale Didier", s: "2026-10-23", e: "2026-11-18", st: "wait", cu: "17th71z8u9n", note: "Maqueta 30-oct, 1ª iteración 02-nov, aprobación general 09-nov. Falta: logo oficial, flujo corregido y formulario de cotización sin registro." },
+
+    { id: "s0", f: "shopify", n: "Tienda Shopify y carga inicial de catálogo", o: "Nicolás De Mayo", s: "2026-10-19", e: "2026-10-21", st: "done", cu: "17th71z8u9v", note: "Productos, colecciones y menú cargados desde Magento." },
+    { id: "s1", f: "shopify", n: "Theme: storefront, buscador, Ofertas, pedido rápido y comparador", o: "Gonzalo Villanueva", s: "2026-11-10", e: "2026-12-04", st: "doing", cu: "17th71z8u9q", note: "Bloques del theme sobre la maqueta aprobada en general." },
+    { id: "s2", f: "shopify", n: "Base B2B: companies, 2 catálogos, cotización y pagos", o: "Gonzalo Villanueva", s: "2026-11-16", e: "2026-11-27", st: "todo", cu: "17th71z8u9p", note: "Companies y usuarios, catálogos base y oferta, cotización como solicitud al ejecutivo, Transbank y transferencia." },
+    { id: "s3", f: "shopify", n: "Migración de clientes, companies e historial de pedidos", o: "Gonzalo Villanueva", s: "2026-11-30", e: "2026-12-11", st: "todo", dep: ["g4"], cu: "17th71z9hcd", note: "Importación desde Magento con el RUT como llave y grupo P11–P14 por cliente." },
+    { id: "s4", f: "shopify", n: "Logística, checkout, pago por transferencia e integraciones", o: "Gonzalo Villanueva", s: "2026-12-07", e: "2026-12-18", st: "todo", cu: "17th71z8u9u", note: "Bodegas, métodos de envío, retiro en bodega, transferencia como pedido con pago pendiente, Klaviyo, Clientify y GA4." },
+    { id: "s5", f: "shopify", n: "Precio en ficha, descuentos visibles y surtido por segmento", o: "Gonzalo Villanueva", s: "2026-12-21", e: "2026-12-30", st: "todo", crit: 1, dep: ["m4"], cu: "17th71z9hce", note: "Precio Base u Oferta con precio anterior tachado, descuento del grupo del cliente visible en la ficha y visibilidad por segmento." },
+    { id: "s6", f: "shopify", n: "Flows de retención por crédito y surtido", o: "Gonzalo Villanueva", s: "2026-12-21", e: "2026-12-31", st: "todo", cu: "17th71z8u9t", note: "Retienen, etiquetan y notifican los pedidos que superan el crédito o traen productos no habilitados." },
+    { id: "s7", f: "shopify", n: "Portal de autogestión: pedidos, documentos y crédito", o: "Gonzalo Villanueva", s: "2027-01-04", e: "2027-01-15", st: "todo", dep: ["m7"], cu: "17th71z8u9r", note: "Historial de pedidos, facturas en PDF, saldo de crédito de tienda." },
+    { id: "s8", f: "shopify", n: "Cotización con precio acordado (draft order)", o: "Gonzalo · Alejandro", s: "2027-01-04", e: "2027-01-13", st: "todo", dep: ["m4"], cu: "17th71z9hpa", note: "El middleware valida el acuerdo vigente y aplica el precio en un draft order que pasa a pedido. Reutiliza la app de cotización existente." },
+
+    { id: "m0", f: "mdw", n: "Infraestructura GCP staging y repositorios", o: "Alejandro · Nicolás", s: "2026-10-19", e: "2026-11-03", st: "done", cu: "17th71z8u9j", note: "Proyecto diprovet-mdw-staging listo el 03-nov." },
+    { id: "m1", f: "mdw", n: "Discovery de la API de Random", o: "Alejandro Hernández", s: "2026-10-21", e: "2026-11-03", st: "done", cu: "17th71z8u9k", note: "Endpoints por flujo, brechas y consumo estimado de transacciones." },
+    { id: "m2", f: "mdw", n: "Base del middleware: persistencia, webhooks y seguridad", o: "Alejandro Hernández", s: "2026-11-09", e: "2026-11-20", st: "doing", crit: 1, cu: "17th71z8u9w", note: "Copia local, webhooks de Shopify con firma HMAC, autenticación contra Random y credenciales protegidas." },
+    { id: "m3", f: "mdw", n: "Sincronización Random → Shopify: catálogo, stock, precio Base y clientes", o: "Alejandro Hernández", s: "2026-11-23", e: "2026-12-04", st: "todo", crit: 1, dep: ["m2", "g5"], cu: "17th71z8u9x", note: "Webhooks de Random más barridos diarios (precios 04:30, clientes 05:00, stock 05:30, catálogo 06:00). Precio Base como precio de la variante y cada empresa con todas sus sucursales." },
+    { id: "m4", f: "mdw", n: "Lista Oferta y descuentos de grupo", o: "Alejandro Hernández", s: "2026-12-07", e: "2026-12-18", st: "todo", crit: 1, dep: ["m3"], cu: "17th71z8u9y", note: "Precios fijos del catálogo Oferta y fin de ofertas, grupo P11–P14 copiado de la empresa a cada contacto y descuento automático por segmento. Prueba de que el precio de la ficha es igual al del checkout." },
+    { id: "m5", f: "mdw", n: "Validación de pedidos y crédito de tienda", o: "Alejandro Hernández", s: "2026-12-21", e: "2026-12-31", st: "todo", crit: 1, dep: ["g5", "m4"], cu: "17th71z9hcf", note: "Surtido por tipo de cliente y saldo = límite − deuda − reservas. El crédito se repone cuando Random informa la factura pagada." },
+    { id: "m6", f: "mdw", n: "Envío de pedidos a Random, pagos y reconciliación", o: "Alejandro Hernández", s: "2027-01-04", e: "2027-01-08", st: "todo", crit: 1, dep: ["m5"], cu: "17th71z8u9z", note: "Nota de venta en Random sin duplicados, aviso de pago de transferencias para despachar y reconciliación nocturna." },
+    { id: "m7", f: "mdw", n: "Panel, control de consumo y documentos para el portal", o: "Alejandro Hernández", s: "2027-01-11", e: "2027-01-15", st: "todo", cu: "17th71z9hcg", note: "Panel de logs y reprocesos, alerta del plan de 6.000 transacciones y facturas para el portal." },
+
+    { id: "q1", f: "salida", n: "Producción GCP, prueba de restauración y Ley 21.719", o: "Alejandro Hernández", s: "2027-01-11", e: "2027-01-15", st: "todo", cu: "17th71z8ua1", note: "Ambiente de producción, prueba de restauración firmada y anexo de datos personales (Ley 21.719)." },
+    { id: "q2", f: "salida", n: "QA integral y UAT con Diprovet", o: "Equipo Propultech · Diprovet", s: "2027-01-11", e: "2027-01-22", st: "todo", crit: 1, dep: ["m6", "s5", "s8"], cu: "17th71z8ua0", note: "QA de punta a punta del 11 al 15 y UAT del cliente del 18 al 22, con aceptación escrita." },
+    { id: "q3", f: "salida", n: "Capacitación, carga final y go-live", o: "Benjamín Beltrán", s: "2027-01-18", e: "2027-01-25", st: "todo", crit: 1, dep: ["q2"], cu: "17th71z8ua2", note: "Sesiones grabadas, carga final de catálogo y clientes, entrega de accesos y salida el lunes 25-ene." }
+  ];
+
+  var MS = [
+    { id: "h1s", lane: "shopify", f: "diseno", d: "2026-11-18", n: "Diseño UX/UI aprobado", k: "H1", crit: "Diseño del storefront y portal aprobado por escrito, solo con ajustes sin desarrollo nuevo.", cu: "17th71z9hcn" },
+    { id: "h1m", lane: "mdw", f: "gestion", d: "2026-11-20", n: "Discovery cerrado y alcance firmado", k: "H1", crit: "Minuta de decisiones firmada, documento de API de Random y anexo de alcance sobre Shopify Advanced.", cu: "17th71z9hcp" },
+    { id: "h2s", lane: "shopify", f: "shopify", d: "2026-12-04", n: "Storefront navegable con base B2B", k: "H2", crit: "Theme navegable con companies, catálogos base y oferta, cotización y pagos configurados.", cu: "17th71z9hcq" },
+    { id: "h2m", lane: "mdw", f: "mdw", d: "2026-12-18", n: "Sincronización y listas de precio operativas", k: "H2", crit: "Catálogo, stock, clientes, listas de precio y descuentos de grupo sincronizados en staging.", cu: "17th71z9hcr" },
+    { id: "h3m", lane: "mdw", f: "mdw", d: "2027-01-08", n: "Pedidos validados y enviados a Random", k: "H3", crit: "Pedido de punta a punta: validación de surtido y crédito, nota de venta en Random y reconciliación.", cu: "17th71z9hct" },
+    { id: "h3s", lane: "shopify", f: "shopify", d: "2027-01-15", n: "Precios, surtido, cotización, portal y flows completos", k: "H3", crit: "Precio en ficha, surtido por segmento, cotización con precio acordado, portal, flows de retención y logística listos para QA.", cu: "17th71z9hcu" },
+    { id: "h4m", lane: "mdw", f: "mdw", d: "2027-01-15", n: "Producción lista y prueba de restauración", k: "H4", crit: "Producción en GCP con dominio, TLS y respaldos, y prueba de restauración documentada y firmada.", cu: "17th71z9hcv" },
+    { id: "h4s", lane: "shopify", f: "salida", d: "2027-01-25", n: "UAT aprobado y go-live", k: "H4", crit: "UAT aceptado por escrito el 22-ene y salida a producción la semana del 25-ene.", cu: "17th71z9hcw" }
+  ];
+
+  function d(s) { var p = s.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
+  function idx(s) { return Math.round((d(s) - START) / DAY); }
+  var MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  function fmt(s) { var x = new Date(d(s)); return x.getUTCDate() + "-" + MES[x.getUTCMonth()]; }
+  function fmtY(s) { var x = new Date(d(s)); return x.getUTCDate() + "-" + MES[x.getUTCMonth()] + "-" + x.getUTCFullYear(); }
+  function workdays(a, b) {
+    var n = 0;
+    for (var t = d(a); t <= d(b); t += DAY) {
+      var w = new Date(t).getUTCDay();
+      var iso = new Date(t).toISOString().slice(0, 10);
+      if (w !== 0 && w !== 6 && HOLIDAYS.indexOf(iso) < 0) n++;
+    }
+    return n;
+  }
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function frente(id) { for (var i = 0; i < FRENTES.length; i++) if (FRENTES[i].id === id) return FRENTES[i]; }
+  function byId(id) { for (var i = 0; i < T.length; i++) if (T[i].id === id) return T[i]; }
+
+  var g = document.getElementById("gantt");
+  g.style.setProperty("--days", DAYS);
+
+  // Overlay
+  var ov = el("div", "overlay");
+  HOLIDAYS.forEach(function (h) { var x = el("div", "hol"); x.style.left = "calc(" + idx(h) + " * var(--dw))"; x.title = "Feriado " + fmt(h); ov.appendChild(x); });
+  var td = el("div", "today"); td.style.left = "calc(" + ((TODAY - START) / DAY + 0.5) + " * var(--dw))"; ov.appendChild(td);
+  g.appendChild(ov);
+
+  // Header
+  var head = el("div", "g-row g-head");
+  head.appendChild(el("div", "g-label", '<span class="eyebrow">Tarea · responsable</span>'));
+  var ht = el("div", "g-track");
+  var lastM = -1;
+  for (var i = 0; i < DAYS; i++) {
+    var dt = new Date(START + i * DAY);
+    if (dt.getUTCMonth() !== lastM && (dt.getUTCDate() === 1 || i === 0)) {
+      lastM = dt.getUTCMonth();
+      var m = el("div", "mon", MES[lastM] + " " + String(dt.getUTCFullYear()).slice(2));
+      m.style.left = "calc(" + i + " * var(--dw))"; ht.appendChild(m);
+    }
+    if (dt.getUTCDay() === 1) {
+      var w = el("div", "wk", String(dt.getUTCDate()).padStart(2, "0"));
+      w.style.left = "calc(" + i + " * var(--dw))"; ht.appendChild(w);
+    }
+  }
+  var tl = el("div", "today-lbl", "HOY");
+  tl.style.left = "calc(" + ((TODAY - START) / DAY + 0.5) + " * var(--dw))";
+  ht.appendChild(tl);
+  head.appendChild(ht);
+  g.appendChild(head);
+
+  var rowsByFrente = {};
+  var selEl = null;
+
+  function laneRow(lane, label) {
+    var r = el("div", "g-row");
+    r.dataset.f = "hitos"; r.dataset.crit = "0";
+    r.appendChild(el("div", "g-label", '<span class="nm">' + label + '</span><span class="ow">4 hitos · aceptación escrita</span>'));
+    var tr = el("div", "g-track");
+    MS.filter(function (m) { return m.lane === lane; }).forEach(function (m) {
+      var b = el("button", "ms"); b.type = "button";
+      b.style.left = "calc(" + (idx(m.d) + 0.5) + " * var(--dw))";
+      b.style.setProperty("--c", "var(" + frente(m.f).c + ")");
+      b.setAttribute("aria-label", m.k + " " + m.n + ", " + fmt(m.d));
+      b.addEventListener("click", function () { select(b, m, true); });
+      tr.appendChild(b);
+      var l = el("span", "ms-lbl", m.k);
+      if (idx(m.d) > DAYS - 16) { l.className += " flip"; l.style.left = "calc(" + (idx(m.d) + 0.5) + " * var(--dw) - 12px)"; }
+      else l.style.left = "calc(" + (idx(m.d) + 0.5) + " * var(--dw) + 12px)";
+      tr.appendChild(l);
+      m._el = b;
+    });
+    r.appendChild(tr);
+    return r;
+  }
+  var gh = el("div", "g-row g-group"); gh.dataset.f = "hitos"; gh.dataset.crit = "0";
+  gh.appendChild(el("div", "g-label", '<span class="gname"><i style="background:var(--fg)"></i>Hitos</span>'));
+  gh.appendChild(el("div", "g-track"));
+  g.appendChild(gh);
+  g.appendChild(laneRow("shopify", "Hitos Shopify"));
+  g.appendChild(laneRow("mdw", "Hitos middleware"));
+
+  FRENTES.forEach(function (f) {
+    var grp = el("div", "g-row g-group"); grp.dataset.f = f.id; grp.dataset.crit = "0";
+    grp.appendChild(el("div", "g-label", '<span class="gname"><i style="background:var(' + f.c + ')"></i>' + f.name + '</span>'));
+    grp.appendChild(el("div", "g-track"));
+    g.appendChild(grp);
+    T.filter(function (t) { return t.f === f.id; }).forEach(function (t) {
+      var r = el("div", "g-row"); r.dataset.f = f.id; r.dataset.crit = t.crit ? "1" : "0";
+      var lab = el("div", "g-label");
+      lab.appendChild(el("span", "nm", t.n));
+      lab.appendChild(el("span", "ow", t.o));
+      r.appendChild(lab);
+      var tr = el("div", "g-track");
+      var b = el("button", "bar " + STATUS[t.st].bar); b.type = "button";
+      var a = idx(t.s), len = idx(t.e) - a + 1;
+      b.style.left = "calc(" + a + " * var(--dw))";
+      b.style.width = "calc(" + len + " * var(--dw))";
+      b.style.setProperty("--c", "var(" + f.c + ")");
+      b.setAttribute("aria-label", t.n + ", " + fmt(t.s) + " a " + fmt(t.e) + ", " + STATUS[t.st].t);
+      if (len < 60) {
+        var tag = el("span", "tag" + (idx(t.e) > DAYS - 16 ? " flip" : ""), fmt(t.s) === fmt(t.e) ? fmt(t.s) : fmt(t.s) + " → " + fmt(t.e));
+        b.appendChild(tag);
+      }
+      b.addEventListener("click", function () { select(b, t, false); });
+      tr.appendChild(b);
+      t._el = b;
+      r.appendChild(tr);
+      g.appendChild(r);
+    });
+  });
+
+  // Detail panel
+  var det = document.getElementById("detail");
+  function select(node, item, isMs) {
+    if (selEl) selEl.classList.remove("sel");
+    selEl = node; node.classList.add("sel");
+    var f = frente(item.f);
+    var html;
+    if (isMs) {
+      html = '<div class="d-main"><span class="eyebrow">Hito ' + item.k.slice(1) + ' · ' + (item.lane === "mdw" ? "middleware" : "Shopify") + '</span>' +
+        '<div class="d-title">' + item.n + '</div><p>' + item.crit + '</p></div>' +
+        '<dl class="d-meta"><dt>Fecha</dt><dd class="mono">' + fmtY(item.d) + '</dd>' +
+        '<dt>Aceptación</dt><dd>Escrita, por Diprovet</dd></dl>';
+    } else {
+      var st = STATUS[item.st];
+      var deps = (item.dep || []).map(function (x) { return byId(x).n; });
+      html = '<div class="d-main"><span class="eyebrow">' + f.name + (item.crit ? ' · ruta crítica' : '') + '</span>' +
+        '<div class="d-title">' + item.n + '</div><p>' + item.note + '</p></div>' +
+        '<dl class="d-meta"><dt>Estado</dt><dd><span class="pill ' + st.cls + '">' + st.t + '</span></dd>' +
+        '<dt>Fechas</dt><dd class="mono">' + fmt(item.s) + ' → ' + fmt(item.e) + ' · ' + workdays(item.s, item.e) + ' días hábiles</dd>' +
+        '<dt>Responsable</dt><dd>' + item.o + '</dd>' +
+        (deps.length ? '<dt>Depende de</dt><dd>' + deps.join("<br>") + '</dd>' : '') +
+        '<dt>ClickUp</dt><dd><a href="' + CU + item.cu + '" target="_blank" rel="noopener">Abrir tarea</a></dd></dl>';
+    }
+    det.innerHTML = html;
+  }
+
+  // Filters
+  var fwrap = document.getElementById("filters");
+  var active = "all";
+  function chip(label, val, color) {
+    var c = el("button", "chip", (color ? '<i class="sw" style="background:var(' + color + ')"></i>' : '') + label);
+    c.type = "button"; c.setAttribute("aria-pressed", val === active ? "true" : "false");
+    c.addEventListener("click", function () {
+      active = val;
+      Array.prototype.forEach.call(fwrap.querySelectorAll(".chip[data-v]"), function (x) { x.setAttribute("aria-pressed", x.dataset.v === active ? "true" : "false"); });
+      Array.prototype.forEach.call(g.querySelectorAll(".g-row:not(.g-head)"), function (r) {
+        r.hidden = !(active === "all" || r.dataset.f === active || r.dataset.f === "hitos");
+      });
+    });
+    c.dataset.v = val;
+    return c;
+  }
+  fwrap.appendChild(chip("Todos", "all"));
+  FRENTES.forEach(function (f) { fwrap.appendChild(chip(f.name, f.id, f.c)); });
+  fwrap.appendChild(el("span", "sep"));
+  var cbtn = el("button", "chip", "Ruta crítica"); cbtn.type = "button"; cbtn.setAttribute("aria-pressed", "false");
+  cbtn.addEventListener("click", function () {
+    var on = !g.classList.contains("crit-on");
+    g.classList.toggle("crit-on", on); cbtn.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+  fwrap.appendChild(cbtn);
+
+  // Hitos table
+  var hb = document.getElementById("hitos-body");
+  MS.slice().sort(function (a, b) { return d(a.d) - d(b.d); }).forEach(function (m) {
+    var tr = el("tr");
+    tr.innerHTML = '<td class="date">' + fmt(m.d) + '</td>' +
+      '<td><span class="fr" style="--c:var(' + (m.lane === "mdw" ? "--c-mdw" : "--c-shopify") + ')"><i></i>' + m.k + ' ' + (m.lane === "mdw" ? "Middleware" : "Shopify") + '</span></td>' +
+      '<td>' + m.n + '</td><td>' + m.crit + '</td>';
+    hb.appendChild(tr);
+  });
+
+  // Stats
+  var doneN = T.filter(function (t) { return t.st === "done"; }).length;
+  document.getElementById("st-done").textContent = doneN + "/" + T.length;
+  var wk = Math.floor((TODAY - START) / DAY / 7) + 1, wkT = Math.ceil(DAYS / 7);
+  document.getElementById("st-week").textContent = "SEM " + wk + "/" + wkT;
+
+  // Default selection and scroll near today
+  select(byId("g5")._el, byId("g5"), false);
+  // Fit the timeline to the available width on large screens; scroll on small ones
+  var wrap = document.getElementById("gwrap");
+  function fit() {
+    var cs = getComputedStyle(document.documentElement);
+    var lw = parseFloat(cs.getPropertyValue("--label-w")) || 300;
+    var min = window.innerWidth <= 720 ? 9 : 8;
+    var dw = Math.max(min, Math.floor(((wrap.clientWidth - lw - 2) / DAYS) * 10) / 10);
+    g.style.setProperty("--dw", dw + "px");
+    if (lw + DAYS * dw > wrap.clientWidth + 4) wrap.scrollLeft = Math.max(0, ((TODAY - START) / DAY - 10) * dw);
+  }
+  fit();
+  var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(fit, 120); });
+})();
+</script>
+
+</body></html>
