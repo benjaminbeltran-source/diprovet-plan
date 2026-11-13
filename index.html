@@ -1,4 +1,9 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title>Plan Diprovet B2B</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -228,6 +233,9 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
 .foot { font-size: 12.5px; color: var(--fg-3); border-top: 1px solid var(--stroke); padding-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
+</head>
+<body>
+
 
 <div class="page">
   <header class="masthead">
@@ -246,18 +254,18 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
         <path fill="#0624FF" d="M354.7,212.15a8.68,8.68,0,0,1,3.72-.86c5.71,0,10.33,6,7.44,11.68L271.37,410l-15.76-45.840L209,380.35c-10.33,3.59-20.3-6.08-16.6-16.09l16.73-45.21-47.29-15.28L354.7,212.15"/>
         <path fill="#50BAFF" d="M416.27,142.67,142,217.82l65.47,22.11a58.27,58.27,0,0,0,42.4-2l111.39-49.83a23.54,23.54,0,0,1,24.53,3.28,21.81,21.81,0,0,1,5.94,26.26l-51.39,108a53.39,53.39,0,0,0-2.06,41.11l22.81,63.48L438.6,164.310C442,152.760,432.75,142,421.28,142a18.75,18.75,0,0,0-5,.68"/>
       </svg>
-      <span class="eyebrow">Actualizado 11 nov 2026 · Benjamín Beltrán, delivery lead</span>
+      <span class="eyebrow">Actualizado 13 nov 2026 · Benjamín Beltrán, delivery lead</span>
     </div>
     <div class="title-block">
       <span class="eyebrow">Diprovet B2B · Shopify Advanced + middleware Random</span>
       <h1>Plan de proyecto</h1>
-      <p class="lede">Planificación del desarrollo desde el kickoff del 19 de octubre hasta la salida a producción la semana del 25 de enero de 2027. Incluye los 8 hitos de entrega, los acuerdos tomados en el Discovery y lo que falta para cerrarlo.</p>
+      <p class="lede">Planificación del desarrollo desde el kickoff del 19 de octubre hasta la salida a producción la semana del 25 de enero de 2027. Incluye los 8 hitos de entrega, los acuerdos del Discovery ajustados con la revisión de Diprovet del 12 de noviembre y lo que falta para cerrarlo.</p>
     </div>
     <div class="stats" role="list">
       <div class="stat" role="listitem"><b>25 ENE</b><span>Go-live, semana del lunes 25-ene-2027</span></div>
-      <div class="stat" role="listitem"><b>20 NOV</b><span>Cierre del Discovery con minuta firmada</span></div>
+      <div class="stat" role="listitem"><b>25 NOV</b><span>Acta de paridad firmada y maqueta v3 aprobada</span></div>
       <div class="stat" role="listitem"><b id="st-week">SEM 4/16</b><span>Semana actual del plan</span></div>
-      <div class="stat" role="listitem"><b id="st-done">5/27</b><span>Tareas terminadas</span></div>
+      <div class="stat" role="listitem"><b id="st-done">5/34</b><span>Tareas terminadas</span></div>
     </div>
   </header>
 
@@ -304,60 +312,61 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
       <section>
         <h3>Precios y descuentos</h3>
         <ul>
-          <li>Dos listas de precio desde Random: base y oferta. Las campañas se manejan con reglas y cupones en Shopify.<small>09·NOV</small></li>
+          <li>Dos listas de precio desde Random: base y oferta. Las promociones (ej. 9 + 1) van como precio de la lista oferta y los productos entran y salen de Promociones solos.<small>12·NOV</small></li>
           <li>Diprovet decide los precios en Random, el middleware los escribe en Shopify y nadie los edita a mano. Una conciliación diaria corrige cualquier diferencia.<small>03·NOV</small></li>
-          <li>Cada cliente pertenece a un solo grupo de descuento (P11 a P14), guardado en cada contacto; el middleware lo copia desde la empresa y el descuento se aplica por segmento.<small>09·NOV</small></li>
-          <li>Precios netos más 19% de IVA. En productos en oferta se muestra el precio anterior tachado.<small>02·NOV</small></li>
-          <li>Si dos descuentos aplican al mismo producto, Shopify cobra el mayor; no se suman. Es un límite de Shopify Advanced, igual que el tope de 25 descuentos automáticos activos.<small>05·NOV</small></li>
+          <li>Cada cliente pertenece a un grupo de descuento (P10 a P14), guardado en cada contacto; el middleware lo copia desde la empresa y el descuento se aplica por segmento.<small>12·NOV</small></li>
+          <li>5 reglas de clientes para el surtido (venta libre, veterinaria, veterinaria y humano, veterinaria y sueros, insumos) y 20 libres para campañas. Cupones limitados por clientes, unidades, fecha o zona.<small>12·NOV</small></li>
+          <li>Precio final del cliente en la ficha, igual al del checkout. Precios netos; el IVA se suma al pagar.<small>12·NOV</small></li>
+          <li>Si dos descuentos aplican al mismo producto, Shopify cobra el mayor; no se suman. Tope de 25 descuentos automáticos activos.<small>05·NOV</small></li>
         </ul>
       </section>
       <section>
         <h3>Clientes y surtido</h3>
         <ul>
           <li>El RUT es la llave única de cada cliente.<small>09·NOV</small></li>
-          <li>Catálogo web de unos 10.000 SKU con stock vigente.<small>21·OCT</small></li>
-          <li>Usuarios nuevos o sin registro no ven productos con receta retenida.<small>09·NOV</small></li>
-          <li>Productos refrigerados y con receta se marcan como atributos del producto.<small>03·NOV</small></li>
-          <li>Un visitante sin registro puede pedir cotización sin ver precios.<small>02·NOV</small></li>
+          <li>Catálogo web de 1.807 SKU en 6 categorías y 30 subcategorías, con especies Perros, Gatos y Animales mayores.<small>12·NOV</small></li>
+          <li>Sin sesión no se ve precio ni stock. Con sesión, stock como Disponible, Pocas unidades (bajo 20; bajo 50 en antiparasitarios) o Agotado, nunca la cifra.<small>12·NOV</small></li>
+          <li>Registro con 16 regiones, tipos médico veterinario independiente y farmacia veterinaria, y médico veterinario responsable.<small>12·NOV</small></li>
+          <li>Cotizador solo para quien no es cliente; con sesión todo es compra.<small>12·NOV</small></li>
         </ul>
       </section>
       <section>
         <h3>Experiencia de compra</h3>
         <ul>
-          <li>Diseño aprobado en general; desde aquí solo ajustes que no impliquen desarrollo nuevo.<small>09·NOV</small></li>
-          <li>Diez marcas destacadas y el resto en orden alfabético.<small>09·NOV</small></li>
-          <li>Pedido rápido con búsqueda por nombre de producto.<small>09·NOV</small></li>
-          <li>Comparador de hasta 4 productos.<small>02·NOV</small></li>
-          <li>La cotización se envía como solicitud al ejecutivo, sin descarga en PDF.<small>02·NOV</small></li>
-          <li>Despacho solo a direcciones existentes y validadas. Sin pago contra entrega.<small>02·NOV</small></li>
+          <li>Menú con Promociones; sin Sucursales, Catálogo ni Contacto; Nosotros al pie. Inicio con laboratorios, ofertas, recién llegados, más vendidos y sin receta.<small>12·NOV</small></li>
+          <li>Página por laboratorio y espacios pagados por laboratorios con vistas y clics.<small>12·NOV</small></li>
+          <li>Filtro y búsqueda por principio activo; sustitutos y complementarios; pedido por archivo.<small>12·NOV</small></li>
+          <li>Todo es factura y la emite Random. Despacho gratis desde $80.000 neto, sin pedido mínimo.<small>12·NOV</small></li>
+          <li>Receta subida antes de pagar o pendiente para envío físico; el pedido se despacha con la receta.<small>12·NOV</small></li>
+          <li>Botón flotante de WhatsApp en todas las páginas.<small>12·NOV</small></li>
         </ul>
       </section>
       <section>
         <h3>Integración con Random</h3>
         <ul>
-          <li>Stock con webhooks de Random más una sincronización completa diaria al inicio de la jornada.<small>03·NOV</small></li>
+          <li>Stock desde Random cada hora, de una sola sucursal.<small>12·NOV</small></li>
+          <li>Nota de venta y factura separadas por grupo (refrigerados, sueros, resto); despacho y cupo sobre el pedido total; OC y nota copiadas en cada nota de venta. Incluido en Fase 1 sin costo.<small>12·NOV</small></li>
           <li>Una compra con transferencia es un pedido con pago pendiente; se despacha cuando Diprovet lo marca como pagado. Una compra con crédito se despacha al crearse.<small>03·NOV</small></li>
-          <li>Los acuerdos de precio por cliente y producto se resuelven por cotización, no con listas.<small>03·NOV</small></li>
-          <li>El crédito se descuenta al comprar en la tienda y se repone cuando Random informa la factura pagada.<em>Mecanismo por confirmar</em><small>03·NOV</small></li>
+          <li>Cupo visible en la cuenta y al pagar; el pedido que lo pasa queda retenido y avisa al cliente y al ejecutivo.<small>12·NOV</small></li>
           <li>Plan de API de Random de 6.000 transacciones al mes; los webhooks no consumen ese cupo.<small>21·OCT</small></li>
         </ul>
       </section>
       <section>
-        <h3>Infraestructura</h3>
+        <h3>Alcance por etapa</h3>
         <ul>
-          <li>El middleware corre en el Google Cloud de Diprovet sobre Compute Engine. Primero staging, luego producción.<small>27·OCT</small></li>
-          <li>Respaldo diario con retención de 30 días, con prueba de restauración antes de producción.<small>27·OCT</small></li>
-          <li>El middleware se publica en un subdominio de Diprovet, sin balanceador.<small>03·NOV</small></li>
-          <li>Repositorios en el GitHub de Propultech durante el desarrollo y transferencia del historial completo a Diprovet.<small>19·OCT</small></li>
+          <li>Fase 1, enero 2027: los 10 puntos contratados del punto 7 del correo, incluidos espacios de laboratorios, sustitutos y pedido por archivo.<small>12·NOV</small></li>
+          <li>Etapa 2 (feb–abr): estado de cuenta y notas de crédito, tracking y postventa.<small>12·NOV</small></li>
+          <li>Etapa 3 (abr–jun): Academia, calendario sanitario, contenido descargable, página del ejecutivo y panel de resultados.<small>12·NOV</small></li>
+          <li>Por cotizar: reposición sugerida, campañas por cartera e indicadores de compra. Fuera de alcance: app o PWA.<small>12·NOV</small></li>
         </ul>
       </section>
       <section>
-        <h3>Forma de trabajo</h3>
+        <h3>Infraestructura y forma de trabajo</h3>
         <ul>
-          <li>Metodología híbrida Scrum y Kanban, con prioridades revisadas cada semana.<small>19·OCT</small></li>
-          <li>Slack (#team-diprovet) como canal principal, de 9 a 18 h.<small>19·OCT</small></li>
-          <li>Reunión de seguimiento semanal los lunes.<small>19·OCT</small></li>
-          <li>Capacitación en sesiones grabadas al cierre del proyecto.<small>19·OCT</small></li>
+          <li>El middleware corre en el Google Cloud de Diprovet sobre Compute Engine, en un subdominio, con respaldo diario de 30 días y prueba de restauración.<small>03·NOV</small></li>
+          <li>Repositorios en el GitHub de Propultech y transferencia del historial a Diprovet.<small>19·OCT</small></li>
+          <li>Weekly los lunes con la hoja de seguimiento de Diprovet como base; Slack #team-diprovet de 9 a 18 h.<small>12·NOV</small></li>
+          <li>Capacitación en las sesiones que hagan falta, con manual de administración.<small>12·NOV</small></li>
         </ul>
       </section>
     </div>
@@ -372,18 +381,19 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
       <table>
         <thead><tr><th>Fecha límite</th><th>Insumo o decisión</th><th>Responsable</th><th>Se necesita para</th></tr></thead>
         <tbody>
-          <tr><td class="date">18-nov</td><td>Casos de uso comerciales de precios y descuentos</td><td>Diprovet · J. L. del Campo, M. Hormazábal</td><td>Reglas de precio y pruebas de QA</td></tr>
-          <tr><td class="date">18-nov</td><td>Excel de clientes por lista P11 a P14</td><td>Diprovet</td><td>Migración de clientes y companies</td></tr>
-          <tr><td class="date">18-nov</td><td>Árbol de categorías, con menos de 7 categorías de nivel 1</td><td>Diprovet · aprobación de Sebastián</td><td>Theme y menú</td></tr>
-          <tr><td class="date">18-nov</td><td>Lista de 38 marcas, top 10 y productos del home</td><td>Diprovet · validación con la DT</td><td>Theme</td></tr>
-          <tr><td class="date">18-nov</td><td>Campos de tipo de cliente y grupo de descuento en la API<span class="sub">No vienen en GET /web32/entidades</span></td><td>Random · Diego Pérez</td><td>Sincronización de clientes (desde 23-nov)</td></tr>
-          <tr><td class="date">18-nov</td><td>Confirmar que la API entrega precios por lista y SKU, la lista de cada empresa, avisos de cambio de precio y el pago de facturas</td><td>Random · Diego Pérez</td><td>Listas de precio y crédito</td></tr>
-          <tr><td class="date">20-nov</td><td>Crédito de tienda de Shopify<span class="sub">Validar: cupo por empresa con una sola sucursal, tope en CLP y uso al pagar una cotización</span></td><td>Propultech y cobranza Diprovet</td><td>Validación de pedidos (desde 21-dic)</td></tr>
-          <tr><td class="date">20-nov</td><td>Días de espera de una transferencia y momento en que el pedido pasa a Random</td><td>Diprovet</td><td>Envío de pedidos y pagos</td></tr>
-          <tr><td class="date">20-nov</td><td>Acuerdos de precio por cliente y producto, y quién inicia la cotización</td><td>Diprovet</td><td>Cotización con precio acordado</td></tr>
-          <tr><td class="date">20-nov</td><td>Retiro en bodega</td><td>Operaciones Diprovet</td><td>Logística y checkout</td></tr>
-          <tr><td class="date">20-nov</td><td>Comisiones de Shopify en ventas a crédito</td><td>Propultech y Diprovet</td><td>Medios de pago</td></tr>
-          <tr><td class="date">11-dic</td><td>Equipo de Diprovet disponible para UAT del 11 al 22 de enero</td><td>Diprovet</td><td>QA y UAT</td></tr>
+          <tr><td class="date">18-nov</td><td>SKU por categoría con su detalle<span class="sub">Propuesta en la hoja «Códigos», en validación</span></td><td>Diprovet</td><td>Catálogo y migración</td></tr>
+          <tr><td class="date">18-nov</td><td>Clientes por lista P10 a P14 con la condición de cada una</td><td>Diprovet</td><td>Migración de clientes y grupos de descuento</td></tr>
+          <tr><td class="date">18-nov</td><td>Lista de productos sin receta para el inicio</td><td>Diprovet · DT</td><td>Theme y maqueta v3</td></tr>
+          <tr><td class="date">18-nov</td><td>Casos de uso del cliente de punta a punta</td><td>Diprovet</td><td>Acta de paridad y QA</td></tr>
+          <tr><td class="date">18-nov</td><td>Clientes de cada una de las 5 reglas de clientes</td><td>Diprovet</td><td>Surtido y reglas</td></tr>
+          <tr><td class="date">18-nov</td><td>Campos de tipo de cliente, grupo de descuento y grupo de nota de venta en la API<span class="sub">No vienen en GET /web32/entidades</span></td><td>Random · Diego Pérez</td><td>Sincronización (desde 23-nov)</td></tr>
+          <tr><td class="date">20-nov</td><td>Base Excel de producto: especie, forma, receta, frío y principio activo</td><td>Diprovet · DT</td><td>Catálogo y filtros</td></tr>
+          <tr><td class="date">20-nov</td><td>Limpieza en Random: 438 códigos a $0, 462 sin categoría y 283 por revisar</td><td>Diprovet</td><td>Sincronización de catálogo</td></tr>
+          <tr><td class="date">20-nov</td><td>Plazos y costo de despacho bajo $80.000, hora de corte, frío y retiro en bodega</td><td>Operaciones Diprovet</td><td>Logística y checkout</td></tr>
+          <tr><td class="date">20-nov</td><td>Documentos para abrir cuenta y quién aprueba el alta</td><td>Diprovet</td><td>Registro y alta</td></tr>
+          <tr><td class="date">25-nov</td><td>Decisiones abiertas: retención por receta con notas separadas, regla dependiente de otra, precio sin sesión, ejecutivo en la nota de venta, ingreso, recálculo al pagar</td><td>Diprovet y Propultech</td><td>Acta de paridad</td></tr>
+          <tr><td class="date">11-dic</td><td>Textos de las páginas de información y testimonios reales</td><td>Diprovet</td><td>Theme</td></tr>
+          <tr><td class="date">11-dic</td><td>Equipo de Diprovet disponible para UAT del 18 al 22 de enero</td><td>Diprovet</td><td>QA y UAT</td></tr>
           <tr><td class="date">18-dic</td><td>Dominio y certificado TLS de producción</td><td>TI Diprovet y Propultech</td><td>Ambiente de producción</td></tr>
         </tbody>
       </table>
@@ -394,8 +404,8 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
     <div class="section-head"><h2 id="h-sup">Supuestos del plan</h2></div>
     <div class="assume">
       <div><b>Calendario</b><p>Se descuentan los feriados del 8 y 25 de diciembre y el 1 de enero. El resto de diciembre y enero se trabaja normal en ambos equipos.</p></div>
-      <div><b>Equipo</b><p>Alejandro Hernández en middleware; Gonzalo Villanueva en Shopify, con Nicolás De Mayo de apoyo; Pascale Didier en diseño; Benjamín Beltrán lidera el proyecto.</p></div>
-      <div><b>Ruta crítica</b><p>Pasa por el middleware: sincronización, reglas de precio, validación y envío de pedidos. El theme muestra precios y surtido una vez que el middleware los calcula.</p></div>
+      <div><b>Equipo</b><p>Alejandro Hernández en middleware; Gonzalo Villanueva en Shopify, con Nicolás De Mayo de apoyo y en la migración; un segundo desarrollador Shopify a tiempo completo desde el 16-nov (por asignar) para los puntos que suma la revisión del 12-nov; Pascale Didier en diseño; Benjamín Beltrán lidera el proyecto.</p></div>
+      <div><b>Ruta crítica</b><p>Pasa por el acta de paridad y el middleware: sincronización, reglas de precio, validación y envío de pedidos por grupo. Con go-live el 25-ene no queda holgura: cualquier atraso del acta o de los insumos corre la salida.</p></div>
     </div>
   </section>
 
@@ -411,7 +421,7 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
   var END = Date.UTC(2027, 0, 31);   // domingo 31-ene-2027
   var DAY = 86400000;
   var DAYS = Math.round((END - START) / DAY) + 1;
-  var TODAY = Date.UTC(2026, 10, 11);
+  var TODAY = Date.UTC(2026, 10, 13);
   var HOLIDAYS = ["2026-12-08", "2026-12-25", "2027-01-01"];
   var CU = "https://app.clickup.com/t/";
 
@@ -431,47 +441,53 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
   };
 
   var T = [
-    { id: "g1", f: "gestion", n: "Gestión del proyecto y weekly de los lunes", o: "Benjamín Beltrán", s: "2026-10-19", e: "2027-01-25", st: "doing", cu: "17th71z7mtf", note: "Seguimiento semanal con Diprovet, prioridades y control del plan." },
+    { id: "g1", f: "gestion", n: "Gestión del proyecto y weekly de los lunes", o: "Benjamín Beltrán", s: "2026-10-19", e: "2027-01-25", st: "doing", cu: "17th71z7mtf", note: "Seguimiento semanal con Diprovet, prioridades y control del plan. Desde el 12-nov, la hoja de seguimiento de Diprovet (80 puntos) es la base de cada reunión." },
     { id: "g2", f: "gestion", n: "Kickoff con Diprovet", o: "Benjamín Beltrán", s: "2026-10-19", e: "2026-10-19", st: "done", cu: "17th71z8u9h", note: "Equipo, alcance sobre Shopify Advanced, metodología y canales." },
-    { id: "g3", f: "gestion", n: "Discovery: sesiones de negocio, diseño y arquitectura", o: "Benjamín · Alejandro · Sebastián", s: "2026-10-21", e: "2026-11-20", st: "doing", cu: "17th71z8u9m", note: "Sesiones del 21-oct, 27-oct, 02-nov, 03-nov y 09-nov. Termina con el documento de diseño." },
-    { id: "g4", f: "gestion", n: "Insumos pendientes de Diprovet y Random", o: "Diprovet · Random", s: "2026-11-09", e: "2026-11-18", st: "risk", crit: 1, cu: "17th71z9hcb", note: "Casos de uso, árbol de categorías, clientes P11–P14, marcas, home, retiro en bodega y campos de tipo de cliente y grupo en la API de Random. Detalle en la tabla de pendientes." },
-    { id: "g5", f: "gestion", n: "Cierre de decisiones, minuta firmada y anexo de alcance", o: "Benjamín Beltrán", s: "2026-11-16", e: "2026-11-20", st: "todo", crit: 1, dep: ["g4"], cu: "17th71z9hcc", note: "Listas de precio, crédito de tienda, pagos y despacho, cotización, visibilidad por segmento, categorías, retiro en bodega y comisiones. Incluye qué se entrega sobre Shopify Advanced y con qué limitaciones." },
+    { id: "g3", f: "gestion", n: "Discovery: sesiones, documento de diseño y acta de paridad", o: "Alejandro Hernández", s: "2026-10-21", e: "2026-11-25", st: "doing", cu: "17th71z8u9m", note: "Sesiones del 21-oct, 27-oct, 02-nov, 03-nov y 09-nov, revisión de maqueta del 12-nov. Termina con el documento de diseño y el acta de paridad." },
+    { id: "g4", f: "gestion", n: "Insumos pendientes de Diprovet y Random", o: "Diprovet · Random", s: "2026-11-09", e: "2026-11-20", st: "risk", crit: 1, cu: "17th71z9hcb", note: "Lo que Diprovet marca como «Diprovet entrega» en su hoja: SKU por categoría, clientes P10–P14, lista sin receta, casos de uso, base Excel de producto, limpieza en Random, despacho y textos. Detalle en la tabla de pendientes." },
+    { id: "g5", f: "gestion", n: "Acta de paridad: confirmación punto por punto y cierre de decisiones", o: "Benjamín Beltrán", s: "2026-11-16", e: "2026-11-25", st: "todo", crit: 1, dep: ["g4"], cu: "17th71z9hcc", note: "Respuesta a cada punto de la hoja de seguimiento del 12-nov: qué entra en la Fase 1, qué queda en la Etapa 2 o 3, qué se cotiza aparte y qué decisiones faltan. Firma de Juan Luis del Campo." },
 
-    { id: "d1", f: "diseno", n: "Diseño UX/UI: maqueta, iteraciones y aprobación", o: "Pascale Didier", s: "2026-10-23", e: "2026-11-18", st: "wait", cu: "17th71z8u9n", note: "Maqueta 30-oct, 1ª iteración 02-nov, aprobación general 09-nov. Falta: logo oficial, flujo corregido y formulario de cotización sin registro." },
+    { id: "d1", f: "diseno", n: "Diseño UX/UI del storefront B2B y aprobación", o: "Pascale Didier", s: "2026-10-23", e: "2026-11-25", st: "wait", cu: "17th71z8u9n", note: "Maqueta 30-oct, iteración 02-nov, aprobación general 09-nov, revisión de Diprovet 12-nov. Se aprueba con la maqueta v3." },
+    { id: "d2", f: "diseno", n: "Maqueta v3: ajustes de la revisión del 12-nov", o: "Pascale Didier", s: "2026-11-13", e: "2026-11-20", st: "todo", crit: 1, cu: "17th71z9u0a", note: "Menú (Promociones; sin Sucursales, Catálogo ni Contacto; Nosotros al pie), inicio (laboratorios, ofertas, recién llegados, más vendidos, sin receta), especies, stock por estado, cotizador solo para no clientes, registro, inicio de la cuenta y textos." },
 
     { id: "s0", f: "shopify", n: "Tienda Shopify y carga inicial de catálogo", o: "Nicolás De Mayo", s: "2026-10-19", e: "2026-10-21", st: "done", cu: "17th71z8u9v", note: "Productos, colecciones y menú cargados desde Magento." },
-    { id: "s1", f: "shopify", n: "Theme: storefront, buscador, Ofertas, pedido rápido y comparador", o: "Gonzalo Villanueva", s: "2026-11-10", e: "2026-12-04", st: "doing", cu: "17th71z8u9q", note: "Bloques del theme sobre la maqueta aprobada en general." },
-    { id: "s2", f: "shopify", n: "Base B2B: companies, 2 catálogos, cotización y pagos", o: "Gonzalo Villanueva", s: "2026-11-16", e: "2026-11-27", st: "todo", cu: "17th71z8u9p", note: "Companies y usuarios, catálogos base y oferta, cotización como solicitud al ejecutivo, Transbank y transferencia." },
-    { id: "s3", f: "shopify", n: "Migración de clientes, companies e historial de pedidos", o: "Gonzalo Villanueva", s: "2026-11-30", e: "2026-12-11", st: "todo", dep: ["g4"], cu: "17th71z9hcd", note: "Importación desde Magento con el RUT como llave y grupo P11–P14 por cliente." },
-    { id: "s4", f: "shopify", n: "Logística, checkout, pago por transferencia e integraciones", o: "Gonzalo Villanueva", s: "2026-12-07", e: "2026-12-18", st: "todo", cu: "17th71z8u9u", note: "Bodegas, métodos de envío, retiro en bodega, transferencia como pedido con pago pendiente, Klaviyo, Clientify y GA4." },
-    { id: "s5", f: "shopify", n: "Precio en ficha, descuentos visibles y surtido por segmento", o: "Gonzalo Villanueva", s: "2026-12-21", e: "2026-12-30", st: "todo", crit: 1, dep: ["m4"], cu: "17th71z9hce", note: "Precio Base u Oferta con precio anterior tachado, descuento del grupo del cliente visible en la ficha y visibilidad por segmento." },
-    { id: "s6", f: "shopify", n: "Flows de retención por crédito y surtido", o: "Gonzalo Villanueva", s: "2026-12-21", e: "2026-12-31", st: "todo", cu: "17th71z8u9t", note: "Retienen, etiquetan y notifican los pedidos que superan el crédito o traen productos no habilitados." },
-    { id: "s7", f: "shopify", n: "Portal de autogestión: pedidos, documentos y crédito", o: "Gonzalo Villanueva", s: "2027-01-04", e: "2027-01-15", st: "todo", dep: ["m7"], cu: "17th71z8u9r", note: "Historial de pedidos, facturas en PDF, saldo de crédito de tienda." },
-    { id: "s8", f: "shopify", n: "Cotización con precio acordado (draft order)", o: "Gonzalo · Alejandro", s: "2027-01-04", e: "2027-01-13", st: "todo", dep: ["m4"], cu: "17th71z9hpa", note: "El middleware valida el acuerdo vigente y aplica el precio en un draft order que pasa a pedido. Reutiliza la app de cotización existente." },
+    { id: "s1", f: "shopify", n: "Theme: storefront, menú, inicio, textos y ajustes de la maqueta v3", o: "Gonzalo Villanueva", s: "2026-11-10", e: "2026-12-04", st: "doing", cu: "17th71z8u9q", note: "Bloques del theme, menú y bloques del inicio pedidos el 12-nov, WhatsApp flotante, páginas de información y mejoras para buscadores (301, mapa del sitio, descripciones por categoría)." },
+    { id: "s2", f: "shopify", n: "Base B2B: companies, catálogos, cotización y pagos", o: "Gonzalo Villanueva", s: "2026-11-16", e: "2026-11-27", st: "todo", cu: "17th71z8u9p", note: "Companies y usuarios con permisos, lista base y oferta, grupo P10–P14 por segmento, cotizador solo para no clientes, crédito, Webpay y transferencia." },
+    { id: "s9", f: "shopify", n: "Catálogo: 6 categorías y 30 subcategorías, filtros y páginas de laboratorio", o: "Dev Shopify 2 (por asignar)", s: "2026-11-16", e: "2026-11-27", st: "todo", cu: "17th71z9u0b", note: "Árbol aprobado (1.807 SKU), metacampos de especie, forma, receta, frío, principio activo y peso; filtro y búsqueda por principio activo; página por laboratorio." },
+    { id: "s3", f: "shopify", n: "Migración de clientes, companies e historial de pedidos", o: "Nicolás De Mayo", s: "2026-11-30", e: "2026-12-11", st: "todo", dep: ["g4"], cu: "17th71z9hcd", note: "Importación desde Magento con el RUT como llave y grupo P10–P14 por cliente. Historial desde la fecha que confirme Diprovet." },
+    { id: "s10", f: "shopify", n: "Registro y alta de clientes, varios usuarios por empresa e ingreso", o: "Dev Shopify 2 (por asignar)", s: "2026-11-30", e: "2026-12-04", st: "todo", cu: "17th71z9u0c", note: "16 regiones, tipos médico veterinario independiente y farmacia veterinaria, médico veterinario responsable, flujo de alta y alternativas de ingreso." },
+    { id: "s4", f: "shopify", n: "Logística, checkout y pagos: despacho, factura, receta y avisos", o: "Gonzalo Villanueva", s: "2026-12-07", e: "2026-12-18", st: "todo", cu: "17th71z8u9u", note: "Despacho gratis desde $80.000 neto, todo es factura (la emite Random), receta antes de pagar o pendiente, carros abandonados, avisos por correo y WhatsApp, Klaviyo y GA4." },
+    { id: "s11", f: "shopify", n: "Sustitutos y complementarios en la ficha", o: "Dev Shopify 2 (por asignar)", s: "2026-12-07", e: "2026-12-11", st: "todo", cu: "17th71z9u0d", note: "Sustituto idéntico en el producto agotado y complementarios en la ficha, cargados por archivo desde la base de Diprovet." },
+    { id: "s12", f: "shopify", n: "Pedido por archivo, volver a comprar y pedido por código", o: "Dev Shopify 2 (por asignar)", s: "2026-12-14", e: "2026-12-18", st: "todo", cu: "17th71z9u0e", note: "Carga de códigos y cantidades por archivo; volver a comprar y pedido por código se mantienen como en la maqueta." },
+    { id: "s5", f: "shopify", n: "Precio en ficha, descuentos visibles, surtido y stock por estado", o: "Gonzalo Villanueva", s: "2026-12-21", e: "2026-12-30", st: "todo", crit: 1, dep: ["m4"], cu: "17th71z9hce", note: "Precio final del cliente igual al del checkout, base tachado y oferta, surtido por regla de clientes y stock como Disponible / Pocas unidades / Agotado." },
+    { id: "s6", f: "shopify", n: "Flows de retención por crédito, surtido y receta", o: "Dev Shopify 2 (por asignar)", s: "2026-12-21", e: "2026-12-24", st: "todo", cu: "17th71z8u9t", note: "Retienen, etiquetan y avisan al cliente y al ejecutivo los pedidos que pasan el cupo, traen productos fuera de su surtido o esperan receta." },
+    { id: "s13", f: "shopify", n: "Espacios de laboratorios en inicio y listado, con vistas y clics", o: "Dev Shopify 2 (por asignar)", s: "2026-12-28", e: "2027-01-05", st: "todo", cu: "17th71z9u0f", note: "Espacios pagados etiquetados como publicidad, con vistas y clics por espacio en Google Analytics." },
+    { id: "s7", f: "shopify", n: "Portal de autogestión: inicio de la cuenta, cupo, facturas, pedidos y sugeridos", o: "Gonzalo Villanueva", s: "2027-01-04", e: "2027-01-15", st: "todo", dep: ["m7"], cu: "17th71z8u9r", note: "Cupo, último pedido, pedidos en curso (web y del ejecutivo), facturas en PDF, favoritos, sugeridos por archivo y botón para pedir aumento de cupo." },
+    { id: "s8", f: "shopify", n: "Cotización y borrador de pedido de Comercial, panel de cotizaciones", o: "Alejandro · Dev Shopify 2", s: "2027-01-06", e: "2027-01-13", st: "todo", dep: ["m4"], cu: "17th71z9hpa", note: "Borrador de pedido que arma Comercial y el cliente confirma (draft order), panel de cotizaciones para Comercial y cotizador para no clientes." },
 
     { id: "m0", f: "mdw", n: "Infraestructura GCP staging y repositorios", o: "Alejandro · Nicolás", s: "2026-10-19", e: "2026-11-03", st: "done", cu: "17th71z8u9j", note: "Proyecto diprovet-mdw-staging listo el 03-nov." },
     { id: "m1", f: "mdw", n: "Discovery de la API de Random", o: "Alejandro Hernández", s: "2026-10-21", e: "2026-11-03", st: "done", cu: "17th71z8u9k", note: "Endpoints por flujo, brechas y consumo estimado de transacciones." },
     { id: "m2", f: "mdw", n: "Base del middleware: persistencia, webhooks y seguridad", o: "Alejandro Hernández", s: "2026-11-09", e: "2026-11-20", st: "doing", crit: 1, cu: "17th71z8u9w", note: "Copia local, webhooks de Shopify con firma HMAC, autenticación contra Random y credenciales protegidas." },
-    { id: "m3", f: "mdw", n: "Sincronización Random → Shopify: catálogo, stock, precio Base y clientes", o: "Alejandro Hernández", s: "2026-11-23", e: "2026-12-04", st: "todo", crit: 1, dep: ["m2", "g5"], cu: "17th71z8u9x", note: "Webhooks de Random más barridos diarios (precios 04:30, clientes 05:00, stock 05:30, catálogo 06:00). Precio Base como precio de la variante y cada empresa con todas sus sucursales." },
-    { id: "m4", f: "mdw", n: "Lista Oferta y descuentos de grupo", o: "Alejandro Hernández", s: "2026-12-07", e: "2026-12-18", st: "todo", crit: 1, dep: ["m3"], cu: "17th71z8u9y", note: "Precios fijos del catálogo Oferta y fin de ofertas, grupo P11–P14 copiado de la empresa a cada contacto y descuento automático por segmento. Prueba de que el precio de la ficha es igual al del checkout." },
-    { id: "m5", f: "mdw", n: "Validación de pedidos y crédito de tienda", o: "Alejandro Hernández", s: "2026-12-21", e: "2026-12-31", st: "todo", crit: 1, dep: ["g5", "m4"], cu: "17th71z9hcf", note: "Surtido por tipo de cliente y saldo = límite − deuda − reservas. El crédito se repone cuando Random informa la factura pagada." },
-    { id: "m6", f: "mdw", n: "Envío de pedidos a Random, pagos y reconciliación", o: "Alejandro Hernández", s: "2027-01-04", e: "2027-01-08", st: "todo", crit: 1, dep: ["m5"], cu: "17th71z8u9z", note: "Nota de venta en Random sin duplicados, aviso de pago de transferencias para despachar y reconciliación nocturna." },
-    { id: "m7", f: "mdw", n: "Panel, control de consumo y documentos para el portal", o: "Alejandro Hernández", s: "2027-01-11", e: "2027-01-15", st: "todo", cu: "17th71z9hcg", note: "Panel de logs y reprocesos, alerta del plan de 6.000 transacciones y facturas para el portal." },
+    { id: "m3", f: "mdw", n: "Sincronización Random → Shopify: catálogo, stock cada hora, precio Base y clientes", o: "Alejandro Hernández", s: "2026-11-23", e: "2026-12-04", st: "todo", crit: 1, dep: ["m2", "g5"], cu: "17th71z8u9x", note: "Webhooks de Random más barridos; stock desde Random cada hora (pedido del 12-nov). Precio Base como precio de la variante, empresas con sus sucursales, cupo de crédito y grupo de cada código para la nota de venta." },
+    { id: "m4", f: "mdw", n: "Lista Oferta, descuentos de grupo y reglas de clientes", o: "Alejandro Hernández", s: "2026-12-07", e: "2026-12-18", st: "todo", crit: 1, dep: ["m3"], cu: "17th71z8u9y", note: "Lista oferta con las promociones y paso automático a Promociones, grupo P10–P14 por contacto, 5 reglas de clientes para el surtido y 20 libres para campañas." },
+    { id: "m5", f: "mdw", n: "Validación de pedidos y crédito de tienda: surtido, receta y cupo", o: "Alejandro Hernández", s: "2026-12-21", e: "2026-12-31", st: "todo", crit: 1, dep: ["g5", "m4"], cu: "17th71z9hcf", note: "Línea fuera del surtido bloqueada con aviso al ejecutivo, pedido con receta retenido hasta tenerla, cupo = límite − deuda − reservas con aviso al cliente y al ejecutivo." },
+    { id: "m6", f: "mdw", n: "Envío a Random con nota de venta por grupo, pagos y reconciliación", o: "Alejandro Hernández", s: "2027-01-04", e: "2027-01-12", st: "todo", crit: 1, dep: ["m5"], cu: "17th71z8u9z", note: "Un pedido web con refrigerados, sueros y resto entra como hasta 3 notas de venta, cada una con su factura, con la OC y la nota copiadas. Despacho y cupo sobre el pedido total. Incluido en Fase 1 sin costo." },
+    { id: "m7", f: "mdw", n: "Panel, control de consumo y documentos para el portal", o: "Alejandro Hernández", s: "2027-01-11", e: "2027-01-15", st: "todo", cu: "17th71z9hcg", note: "Panel de logs y reprocesos, alerta del plan de 6.000 transacciones, facturas en PDF y pedidos tomados por el ejecutivo para la cuenta." },
 
-    { id: "q1", f: "salida", n: "Producción GCP, prueba de restauración y Ley 21.719", o: "Alejandro Hernández", s: "2027-01-11", e: "2027-01-15", st: "todo", cu: "17th71z8ua1", note: "Ambiente de producción, prueba de restauración firmada y anexo de datos personales (Ley 21.719)." },
-    { id: "q2", f: "salida", n: "QA integral y UAT con Diprovet", o: "Equipo Propultech · Diprovet", s: "2027-01-11", e: "2027-01-22", st: "todo", crit: 1, dep: ["m6", "s5", "s8"], cu: "17th71z8ua0", note: "QA de punta a punta del 11 al 15 y UAT del cliente del 18 al 22, con aceptación escrita." },
-    { id: "q3", f: "salida", n: "Capacitación, carga final y go-live", o: "Benjamín Beltrán", s: "2027-01-18", e: "2027-01-25", st: "todo", crit: 1, dep: ["q2"], cu: "17th71z8ua2", note: "Sesiones grabadas, carga final de catálogo y clientes, entrega de accesos y salida el lunes 25-ene." }
+    { id: "q1", f: "salida", n: "Producción GCP, prueba de restauración y Ley 21.719", o: "Alejandro Hernández", s: "2027-01-11", e: "2027-01-15", st: "todo", cu: "17th71z8ua1", note: "Ambiente de producción, doble factor en el panel, claves en Secret Manager, auditoría, prueba de restauración firmada y anexo de datos personales (Ley 21.719)." },
+    { id: "q2", f: "salida", n: "QA integral y UAT con Diprovet", o: "Equipo Propultech · Diprovet", s: "2027-01-11", e: "2027-01-22", st: "todo", crit: 1, dep: ["m6", "s5", "s8"], cu: "17th71z8ua0", note: "QA de punta a punta del 11 al 15 y UAT del 18 al 22 contra la hoja de seguimiento, con aceptación escrita." },
+    { id: "q3", f: "salida", n: "Capacitación, carga final y go-live", o: "Benjamín Beltrán", s: "2027-01-18", e: "2027-01-25", st: "todo", crit: 1, dep: ["q2"], cu: "17th71z8ua2", note: "Las sesiones que hagan falta y manual de administración, carga final de catálogo y clientes, medición desde el día 1 y salida el lunes 25-ene." }
   ];
 
   var MS = [
-    { id: "h1s", lane: "shopify", f: "diseno", d: "2026-11-18", n: "Diseño UX/UI aprobado", k: "H1", crit: "Diseño del storefront y portal aprobado por escrito, solo con ajustes sin desarrollo nuevo.", cu: "17th71z9hcn" },
-    { id: "h1m", lane: "mdw", f: "gestion", d: "2026-11-20", n: "Discovery cerrado y alcance firmado", k: "H1", crit: "Minuta de decisiones firmada, documento de API de Random y anexo de alcance sobre Shopify Advanced.", cu: "17th71z9hcp" },
-    { id: "h2s", lane: "shopify", f: "shopify", d: "2026-12-04", n: "Storefront navegable con base B2B", k: "H2", crit: "Theme navegable con companies, catálogos base y oferta, cotización y pagos configurados.", cu: "17th71z9hcq" },
-    { id: "h2m", lane: "mdw", f: "mdw", d: "2026-12-18", n: "Sincronización y listas de precio operativas", k: "H2", crit: "Catálogo, stock, clientes, listas de precio y descuentos de grupo sincronizados en staging.", cu: "17th71z9hcr" },
-    { id: "h3m", lane: "mdw", f: "mdw", d: "2027-01-08", n: "Pedidos validados y enviados a Random", k: "H3", crit: "Pedido de punta a punta: validación de surtido y crédito, nota de venta en Random y reconciliación.", cu: "17th71z9hct" },
-    { id: "h3s", lane: "shopify", f: "shopify", d: "2027-01-15", n: "Precios, surtido, cotización, portal y flows completos", k: "H3", crit: "Precio en ficha, surtido por segmento, cotización con precio acordado, portal, flows de retención y logística listos para QA.", cu: "17th71z9hcu" },
-    { id: "h4m", lane: "mdw", f: "mdw", d: "2027-01-15", n: "Producción lista y prueba de restauración", k: "H4", crit: "Producción en GCP con dominio, TLS y respaldos, y prueba de restauración documentada y firmada.", cu: "17th71z9hcv" },
-    { id: "h4s", lane: "shopify", f: "salida", d: "2027-01-25", n: "UAT aprobado y go-live", k: "H4", crit: "UAT aceptado por escrito el 22-ene y salida a producción la semana del 25-ene.", cu: "17th71z9hcw" }
+    { id: "h1s", lane: "shopify", f: "diseno", d: "2026-11-25", n: "Maqueta v3 aprobada", k: "H1", crit: "Maqueta v3 con los ajustes del 12-nov aprobada por escrito.", cu: "17th71z9u0a" },
+    { id: "h1m", lane: "mdw", f: "gestion", d: "2026-11-25", n: "Acta de paridad firmada", k: "H1", crit: "Cada punto de la hoja de seguimiento con su etapa y decisión, documento de diseño y API de Random, firmados por Juan Luis del Campo.", cu: "17th71z9hcc" },
+    { id: "h2s", lane: "shopify", f: "shopify", d: "2026-12-04", n: "Storefront navegable con base B2B y catálogo", k: "H2", crit: "Theme navegable con el árbol de 6 categorías, companies, listas base y oferta, cotización, pagos y registro.", cu: "17th71z8u9q" },
+    { id: "h2m", lane: "mdw", f: "mdw", d: "2026-12-18", n: "Sincronización, listas y reglas operativas", k: "H2", crit: "Catálogo, stock cada hora, clientes, listas, grupos P10–P14 y reglas de clientes sincronizados en staging.", cu: "17th71z8u9y" },
+    { id: "h3m", lane: "mdw", f: "mdw", d: "2027-01-12", n: "Pedidos validados y enviados a Random por grupo", k: "H3", crit: "Pedido de punta a punta: surtido, receta y cupo validados, notas de venta por grupo en Random y reconciliación.", cu: "17th71z8u9z" },
+    { id: "h3s", lane: "shopify", f: "shopify", d: "2027-01-15", n: "Fase 1 completa en Shopify", k: "H3", crit: "Precio en ficha, stock por estado, surtido, sustitutos, pedido por archivo, espacios de laboratorios, cotización, portal y flows listos para QA.", cu: "17th71z8u9r" },
+    { id: "h4m", lane: "mdw", f: "mdw", d: "2027-01-15", n: "Producción lista y prueba de restauración", k: "H4", crit: "Producción en GCP con dominio, TLS y respaldos, y prueba de restauración documentada y firmada.", cu: "17th71z8ua1" },
+    { id: "h4s", lane: "shopify", f: "salida", d: "2027-01-25", n: "UAT aprobado y go-live", k: "H4", crit: "UAT aceptado por escrito el 22-ene y salida a producción la semana del 25-ene.", cu: "17th71z8ua2" }
   ];
 
   function d(s) { var p = s.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
@@ -670,4 +686,5 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
 })();
 </script>
 
-</body></html>
+</body>
+</html>
