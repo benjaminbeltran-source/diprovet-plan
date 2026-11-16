@@ -158,6 +158,20 @@ a:hover { text-decoration-color: var(--accent); }
     repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px calc(7 * var(--dw))),
     repeating-linear-gradient(to right, transparent 0 calc(5 * var(--dw)), var(--weekend) calc(5 * var(--dw)) calc(7 * var(--dw)));
 }
+.dy { position: absolute; bottom: 7px; width: var(--dw); text-align: center; font: 400 10px/1 var(--font-mono); color: var(--fg-3); font-variant-numeric: tabular-nums; display: none; white-space: nowrap; }
+.dy.we { opacity: 0.55; }
+.gantt.z-dia .dy { display: block; }
+.gantt.z-dia .wk { display: none; }
+.gantt.z-dia .today-lbl, .gantt.z-semana .today-lbl { top: 4px; }
+.wk .wr { display: none; }
+.gantt.z-semana .wk .wr { display: inline; }
+.gantt.z-dia .overlay {
+  background:
+    repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px calc(7 * var(--dw))),
+    repeating-linear-gradient(to right, color-mix(in srgb, var(--grid) 50%, transparent) 0 1px, transparent 1px var(--dw)),
+    repeating-linear-gradient(to right, transparent 0 calc(5 * var(--dw)), var(--weekend) calc(5 * var(--dw)) calc(7 * var(--dw)));
+}
+.zlbl { font: 500 11px/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); }
 .hol { position: absolute; top: 52px; bottom: 0; width: var(--dw); background: var(--holiday); }
 .today { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--today); }
 .today-lbl { position: absolute; top: 22px; transform: translateX(-50%); font: 500 10px/1 var(--font-mono); letter-spacing: 0.06em; color: var(--surface); background: var(--today); padding: 3px 4px; border-radius: 1px; white-space: nowrap; }
@@ -272,7 +286,7 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
   <section class="section" aria-labelledby="h-gantt">
     <div class="section-head">
       <h2 id="h-gantt">Carta Gantt</h2>
-      <p>Toca una barra para ver el detalle. La ruta crítica marca la cadena que define la fecha de go-live: cada semana de atraso en ella corre el go-live en la misma medida.</p>
+      <p>Toca una barra para ver el detalle y cambia la vista por día, semana o mes. La ruta crítica marca la cadena que define la fecha de go-live: cada semana de atraso en ella corre el go-live en la misma medida.</p>
     </div>
     <div class="controls" id="filters" role="group" aria-label="Filtrar por frente"></div>
     <div class="legend">
@@ -529,8 +543,12 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
       var m = el("div", "mon", MES[lastM] + " " + String(dt.getUTCFullYear()).slice(2));
       m.style.left = "calc(" + i + " * var(--dw))"; ht.appendChild(m);
     }
+    var wd = dt.getUTCDay();
+    var dy = el("div", "dy" + (wd === 0 || wd === 6 ? " we" : ""), "DLMXJVS"[wd] + " " + dt.getUTCDate());
+    dy.style.left = "calc(" + i + " * var(--dw))"; ht.appendChild(dy);
     if (dt.getUTCDay() === 1) {
-      var w = el("div", "wk", String(dt.getUTCDate()).padStart(2, "0"));
+      var fri = new Date(START + (i + 4) * DAY);
+      var w = el("div", "wk", String(dt.getUTCDate()).padStart(2, "0") + '<span class="wr"> – ' + fri.getUTCDate() + " " + MES[fri.getUTCMonth()] + "</span>");
       w.style.left = "calc(" + i + " * var(--dw))"; ht.appendChild(w);
     }
   }
@@ -652,6 +670,17 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
     g.classList.toggle("crit-on", on); cbtn.setAttribute("aria-pressed", on ? "true" : "false");
   });
   fwrap.appendChild(cbtn);
+  fwrap.appendChild(el("span", "sep"));
+  fwrap.appendChild(el("span", "zlbl", "Vista"));
+  var ZOOM = "mes";
+  try { var zs = localStorage.getItem("diprovet-zoom"); if (zs === "dia" || zs === "semana" || zs === "mes") ZOOM = zs; } catch (e) {}
+  var zbtns = [];
+  [["dia", "Día"], ["semana", "Semana"], ["mes", "Mes"]].forEach(function (z) {
+    var b = el("button", "chip", z[1]); b.type = "button"; b.dataset.z = z[0];
+    b.setAttribute("aria-pressed", z[0] === ZOOM ? "true" : "false");
+    b.addEventListener("click", function () { setZoom(z[0]); });
+    zbtns.push(b); fwrap.appendChild(b);
+  });
 
   // Hitos table
   var hb = document.getElementById("hitos-body");
@@ -673,15 +702,28 @@ td .sub { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; 
   select(byId("g5")._el, byId("g5"), false);
   // Fit the timeline to the available width on large screens; scroll on small ones
   var wrap = document.getElementById("gwrap");
+  var ZW = { dia: 44, semana: 20 };
   function fit() {
     var cs = getComputedStyle(document.documentElement);
     var lw = parseFloat(cs.getPropertyValue("--label-w")) || 300;
-    var min = window.innerWidth <= 720 ? 9 : 8;
-    var dw = Math.max(min, Math.floor(((wrap.clientWidth - lw - 2) / DAYS) * 10) / 10);
+    var dw;
+    if (ZOOM === "mes") {
+      var min = window.innerWidth <= 720 ? 9 : 8;
+      dw = Math.max(min, Math.floor(((wrap.clientWidth - lw - 2) / DAYS) * 10) / 10);
+    } else dw = ZW[ZOOM];
     g.style.setProperty("--dw", dw + "px");
-    if (lw + DAYS * dw > wrap.clientWidth + 4) wrap.scrollLeft = Math.max(0, ((TODAY - START) / DAY - 10) * dw);
+    if (lw + DAYS * dw > wrap.clientWidth + 4) wrap.scrollLeft = Math.max(0, ((TODAY - START) / DAY - (ZOOM === "dia" ? 3 : 10)) * dw);
+    else wrap.scrollLeft = 0;
   }
-  fit();
+  function setZoom(z) {
+    ZOOM = z;
+    g.classList.toggle("z-dia", z === "dia");
+    g.classList.toggle("z-semana", z === "semana");
+    zbtns.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.z === z ? "true" : "false"); });
+    try { localStorage.setItem("diprovet-zoom", z); } catch (e) {}
+    fit();
+  }
+  setZoom(ZOOM);
   var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(fit, 120); });
 })();
 </script>
